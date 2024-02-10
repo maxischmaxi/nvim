@@ -71,49 +71,6 @@ require('lazy').setup({
   'tpope/vim-sleuth',
   'github/copilot.vim',
   {
-    'nvim-tree/nvim-tree.lua',
-    dependencies = {
-      'nvim-tree/nvim-web-devicons',
-    },
-    config = function()
-      local function my_on_attach(bufnr)
-        print 'on_attach nvim-tree'
-        local api = require 'nvim-tree.api'
-
-        local function opts(desc)
-          return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
-        end
-
-        api.config.mappings.default_on_attach(bufnr)
-
-        vim.keymap.set('n', '<C-s>', api.tree.change_root_to_parent, opts 'Up')
-        vim.keymap.set('n', '?', api.tree.toggle_help, opts 'Help')
-      end
-
-      require('nvim-tree').setup {
-        on_attach = my_on_attach,
-        sort = {
-          sorter = 'case_sensitive',
-        },
-        view = {
-          width = 30,
-          side = 'left',
-        },
-        renderer = {
-          group_empty = true,
-        },
-        filters = {
-          dotfiles = false,
-        },
-      }
-
-      local api = require 'nvim-tree.api'
-
-      vim.keymap.set('n', '<C-b>', api.tree.toggle,
-        { desc = 'nvim-tree: Toggle', noremap = true, silent = true, nowait = true })
-    end,
-  },
-  {
     'nvim-lualine/lualine.nvim',
     config = function()
       require 'custom.config.lualine'

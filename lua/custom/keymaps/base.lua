@@ -2,7 +2,7 @@ local keyset = vim.keymap.set
 
 -- [[ Neotree keymaps ]]
 
-keyset('n', '<leader>b', ':Explore<CR>', { silent = true })
+keyset('n', '<C-b>', ':Explore<CR>', { silent = true })
 
 -- [[ Basic Keymaps ]]
 
