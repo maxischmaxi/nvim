@@ -2,7 +2,7 @@ local keyset = vim.keymap.set
 
 -- [[ Neotree keymaps ]]
 
-keyset('n', '<c-b>', ':Oil<CR>', { silent = true })
+keyset('n', '<leader>b', ':Explore<CR>', { silent = true })
 
 -- [[ Basic Keymaps ]]
 
@@ -18,10 +18,10 @@ keyset('i', '∆', '<Esc>:m .-2<CR>==', { silent = true })
 keyset('v', '∆', ":m '<-2<CR>gv=gv", { silent = true })
 keyset('n', '<leader>+', ':exe "vertical resize " . (winwidth(0) * 3/2)<CR>', { silent = true })
 keyset('n', '<leader>-', ':exe "vertical resize " . (winwidth(0) * 2/3)<CR>', { silent = true })
-keyset('n', '<c-l>', '<c-w><c-l>', { silent = true })
-keyset('n', '<c-h>', '<c-w><c-h>', { silent = true })
-keyset('n', '<c-j>', '<c-w><c-j>', { silent = true })
-keyset('n', '<c-k>', '<c-w><c-k>', { silent = true })
+-- keyset('n', '<c-l>', '<c-w><c-l>', { silent = true })
+-- keyset('n', '<c-h>', '<c-w><c-h>', { silent = true })
+-- keyset('n', '<c-j>', '<c-w><c-j>', { silent = true })
+-- keyset('n', '<c-k>', '<c-w><c-k>', { silent = true })
 keyset('n', '<leader>v', '<c-w>v', { silent = true })
 
 -- Keymaps for better default experience
@@ -40,3 +40,6 @@ keyset('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics l
 
 -- save file without formatting
 keyset('n', '<leader>s', ':w<CR>', { silent = true })
+
+-- paste register hack
+keyset('n', '<leader>p', '"0p', { silent = true })
