@@ -23,6 +23,7 @@ vim.o.updatetime = 250
 vim.o.timeoutlen = 300
 vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
+vim.o.language = 'en_US'
 
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
@@ -41,6 +42,7 @@ require 'custom.config.autocmd'
 require 'custom.netrw.netrw'
 require 'custom.plugins.yankhighlight'
 require 'custom.keymaps.base'
+require 'custom.plugins.rebase'
 
 require('lazy').setup({
   'nvim-lua/plenary.nvim',
@@ -66,6 +68,7 @@ require('lazy').setup({
   require 'custom.plugins.lsp-config',
   require 'custom.plugins.nvim-cmp',
   require 'custom.plugins.telescope',
+  require 'kickstart.plugins.debug',
   'folke/which-key.nvim',
 }, {})
 
