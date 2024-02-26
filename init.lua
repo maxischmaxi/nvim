@@ -19,6 +19,7 @@ vim.o.undofile = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.wo.signcolumn = 'yes'
+vim.wo.relativenumber = true
 vim.o.updatetime = 250
 vim.o.timeoutlen = 300
 vim.o.completeopt = 'menuone,noselect'
@@ -38,11 +39,10 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require 'custom.config.autocmd'
-require 'custom.netrw.netrw'
-require 'custom.plugins.yankhighlight'
-require 'custom.keymaps.base'
-require 'custom.plugins.rebase'
+-- require 'custom.netrw'
+require 'custom.yankhighlight'
+require 'custom.keymaps'
+require 'custom.rebase'
 
 require('lazy').setup({
   'nvim-lua/plenary.nvim',
@@ -51,25 +51,22 @@ require('lazy').setup({
   'tpope/vim-rhubarb',
   'tpope/vim-sleuth',
   'github/copilot.vim',
-  require 'custom.plugins.treesitter',
-  require 'custom.plugins.tokyonight',
-  require 'custom.plugins.tmux-navigation',
-  require 'custom.plugins.lualine',
-  require 'custom.plugins.gitsigns',
-  require 'custom.plugins.wilder',
-  require 'custom.plugins.null-ls',
-  require 'custom.plugins.prettier',
-  require 'custom.plugins.cursorline',
-  require 'custom.plugins.ufo',
-  require 'custom.plugins.spectre',
-  require 'custom.plugins.dressing',
-  require 'custom.plugins.autopairs',
-  require 'custom.plugins.toggleterm',
-  require 'custom.plugins.lsp-config',
-  require 'custom.plugins.nvim-cmp',
-  require 'custom.plugins.telescope',
-  require 'kickstart.plugins.debug',
-  'folke/which-key.nvim',
+  require 'custom.treesitter',
+  require 'custom.tmux-navigation',
+  require 'custom.lualine',
+  require 'custom.gitsigns',
+  require 'custom.prettier',
+  require 'custom.cursorline',
+  require 'custom.autopairs',
+  require 'custom.lsp-config',
+  require 'custom.nvim-cmp',
+  require 'custom.telescope',
+  require 'custom.trouble',
+  require 'custom.whichkey',
+  require 'custom.oil',
+  require 'custom.colorscheme',
+  require 'custom.rust-tools',
+  require 'custom.chatgpt',
+  require 'custom.git-conflict',
+  require 'custom.format-on-save',
 }, {})
-
-require 'custom.config.whichkey'

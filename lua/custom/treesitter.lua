@@ -10,16 +10,8 @@ return {
         -- Add languages to be installed here that you want installed for treesitter
         ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash', 'css' },
 
-        autotag = {
-          enable = true,
-          enable_rename = true,
-          enable_close = true,
-          enable_close_on_slash = true,
-          filetypes = { 'html', 'xml' },
-        },
-
         -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
-        auto_install = false,
+        auto_install = true,
         highlight = { enable = true },
         indent = { enable = true },
         incremental_selection = {
@@ -33,6 +25,10 @@ return {
         },
         autotag = {
           enable = true,
+          enable_rename = true,
+          enable_close = true,
+          enable_close_on_slash = true,
+          filetypes = { 'html', 'xml' },
         },
         textobjects = {
           select = {

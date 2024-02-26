@@ -5,10 +5,17 @@ return {
     'williamboman/mason-lspconfig.nvim',
     'folke/neodev.nvim',
   },
-
   config = function()
     require('neodev').setup()
-    require('mason').setup()
+    require('mason').setup({
+      ui = {
+        icons = {
+          package_installed = " ",
+          package_pending = " ",
+          package_uninstalled = " ",
+        }
+      }
+    })
     require('mason-lspconfig').setup()
 
     local servers = {
@@ -54,7 +61,7 @@ return {
         format = {
           enable = true,
         },
-        -- autoFixOnSave = true,
+        autoFixOnSave = true,
         packageManager = 'npm',
         lintTask = {
           enable = true,
@@ -92,11 +99,6 @@ return {
       nmap('<leader>wl', function()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
       end, '[W]orkspace [L]ist Folders')
-
-      -- Create a command `:Format` local to the LSP buffer
-      vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-        vim.lsp.buf.format()
-      end, { desc = 'Format current buffer with LSP' })
     end
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
