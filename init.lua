@@ -1,4 +1,5 @@
 vim.g.mapleader = ' '
+vim.opt.colorcolumn = "80"
 vim.g.maplocalleader = ' '
 vim.o.wrap = false
 vim.o.tabstop = 2
@@ -63,7 +64,8 @@ require('lazy').setup({
   require 'custom.telescope',
   require 'custom.trouble',
   require 'custom.whichkey',
-  require 'custom.oil',
+  require 'custom.vim-apm',
+  -- require 'custom.oil',
   require 'custom.colorscheme',
   require 'custom.rust-tools',
   require 'custom.chatgpt',
