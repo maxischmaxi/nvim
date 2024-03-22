@@ -4,7 +4,7 @@ return {
     require('lualine').setup {
       options = {
         icons_enabled = false,
-        theme = 'rose-pine',
+        theme = 'catppuccin',
         component_separators = '|',
         section_separators = '',
       },
@@ -27,6 +27,7 @@ return {
             'diagnostics',
             sources = {
               'nvim_lsp',
+              'nvim_diagnostic',
             },
             alawys_visible = false,
           },

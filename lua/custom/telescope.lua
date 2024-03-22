@@ -12,13 +12,19 @@ return {
     },
   },
   config = function()
+    local trouble = require("trouble")
+
     require('telescope').setup {
       defaults = {
         mappings = {
           i = {
             ['<C-u>'] = false,
             ['<C-d>'] = false,
+            ['<C-t>'] = trouble.open_with_trouble,
           },
+          n = {
+            ['<C-t>'] = trouble.open_with_trouble,
+          }
         },
       },
     }

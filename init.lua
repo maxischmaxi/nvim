@@ -26,6 +26,9 @@ vim.o.timeoutlen = 300
 vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
 vim.o.language = 'en_US'
+vim.diagnostic.config({
+  underline = true,
+})
 
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
@@ -40,14 +43,12 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- require 'custom.netrw'
+require 'custom.netrw'
 require 'custom.yankhighlight'
 require 'custom.keymaps'
 require 'custom.rebase'
 
 require('lazy').setup({
-  'nvim-lua/plenary.nvim',
-  'windwp/nvim-ts-autotag',
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
   'tpope/vim-sleuth',
@@ -65,10 +66,11 @@ require('lazy').setup({
   require 'custom.trouble',
   require 'custom.whichkey',
   require 'custom.vim-apm',
+  require 'custom.autopairs',
   -- require 'custom.oil',
   require 'custom.colorscheme',
   require 'custom.rust-tools',
-  require 'custom.chatgpt',
-  require 'custom.git-conflict',
+  -- require 'custom.chatgpt',
+  -- require 'custom.git-conflict',
   require 'custom.format-on-save',
 }, {})
