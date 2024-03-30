@@ -67,6 +67,7 @@ require('lazy').setup({
   require 'custom.whichkey',
   require 'custom.vim-apm',
   require 'custom.autopairs',
+  require 'custom.comment',
   -- require 'custom.oil',
   require 'custom.colorscheme',
   require 'custom.rust-tools',

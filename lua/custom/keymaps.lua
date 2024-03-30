@@ -30,6 +30,3 @@ keyset('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic 
 keyset('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 keyset('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 keyset('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
-
--- save file without formatting
-keyset('n', '<leader>s', ':noa w', { silent = true })
