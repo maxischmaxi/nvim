@@ -11,7 +11,7 @@ return {
       }),
       formatters.if_file_exists({
         pattern = { "*.eslintrc.*", ".eslintrc.*" },
-        formatter = formatters.eslint_d_fix,
+        -- formatter = formatters.eslint_d_fix,
       })
     }
 
