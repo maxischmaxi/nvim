@@ -46,7 +46,6 @@ vim.opt.rtp:prepend(lazypath)
 -- require 'custom.netrw'
 -- require 'custom.yankhighlight'
 require 'custom.keymaps'
-require 'custom.rebase'
 
 require('lazy').setup({
   'tpope/vim-fugitive',
@@ -56,9 +55,9 @@ require('lazy').setup({
   require 'custom.treesitter',
   require 'custom.tmux-navigation',
   require 'custom.lualine',
-  -- require 'custom.gitsigns',
+  require 'custom.gitsigns',
   require 'custom.prettier',
-  -- require 'custom.cursorline',
+  require 'custom.cursorline',
   require 'custom.lsp-config',
   require 'custom.nvim-cmp',
   require 'custom.telescope',
