@@ -14,6 +14,9 @@ keyset('v', '∆', ":m '<-2<CR>gv=gv", { silent = true })
 keyset('n', '<leader>+', ':exe "vertical resize " . (winwidth(0) * 3/2)<CR>', { silent = true })
 keyset('n', '<leader>-', ':exe "vertical resize " . (winwidth(0) * 2/3)<CR>', { silent = true })
 
+-- Mark whole buffer
+keyset('n', '<leader>ma', 'ggVG', { silent = true })
+
 keyset('n', '<c-l>', '<c-w><c-l>', { silent = true })
 keyset('n', '<c-h>', '<c-w><c-h>', { silent = true })
 keyset('n', '<c-j>', '<c-w><c-j>', { silent = true })

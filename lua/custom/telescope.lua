@@ -12,23 +12,19 @@ return {
     },
   },
   config = function()
-    local trouble = require("trouble")
-
     require('telescope').setup {
       defaults = {
-        mappings = {
-          i = {
-            ['<C-u>'] = false,
-            ['<C-d>'] = false,
-            ['<C-t>'] = trouble.open_with_trouble,
-          },
-          n = {
-            ['<C-t>'] = trouble.open_with_trouble,
-          }
+        file_ignore_patterns = {
+          "./node%_modules/*",
+          "node%_modules",
+          "^node%_modules/*",
+          "node%_modules/*",
         },
-      },
+      }
     }
+
     pcall(require('telescope').load_extension, 'fzf')
+
     vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
     vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
     vim.keymap.set('n', '<leader>/', function()

@@ -37,9 +37,9 @@ return {
       tsserver = {
         filetypes = {
           'javascript',
+          'javascriptreact',
           'typescript',
           'typescriptreact',
-          'typescript.tsx',
         },
       },
 

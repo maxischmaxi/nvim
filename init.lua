@@ -1,7 +1,7 @@
 vim.g.mapleader = ' '
 vim.opt.colorcolumn = "80"
 vim.g.maplocalleader = ' '
-vim.o.wrap = false
+vim.o.wrap = true
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
 vim.o.softtabstop = 2
@@ -43,8 +43,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require 'custom.netrw'
-require 'custom.yankhighlight'
+-- require 'custom.netrw'
+-- require 'custom.yankhighlight'
 require 'custom.keymaps'
 require 'custom.rebase'
 
@@ -52,26 +52,30 @@ require('lazy').setup({
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
   'tpope/vim-sleuth',
-  'github/copilot.vim',
+  require 'custom.copilot',
   require 'custom.treesitter',
   require 'custom.tmux-navigation',
   require 'custom.lualine',
-  require 'custom.gitsigns',
+  -- require 'custom.gitsigns',
   require 'custom.prettier',
-  require 'custom.cursorline',
-  require 'custom.autopairs',
+  -- require 'custom.cursorline',
   require 'custom.lsp-config',
   require 'custom.nvim-cmp',
   require 'custom.telescope',
-  require 'custom.trouble',
-  require 'custom.whichkey',
-  require 'custom.vim-apm',
-  require 'custom.autopairs',
+  -- require 'custom.trouble',
+  -- require 'custom.vim-apm',
+  -- require 'custom.git-blame',
   require 'custom.comment',
-  -- require 'custom.oil',
+  require 'custom.autopairs',
+  require 'custom.toggleterm',
+  -- require 'custom.visual-multi',
+  -- require 'custom.leap',
+  require 'custom.oil',
+  -- require 'custom.codeium',
   require 'custom.colorscheme',
-  require 'custom.rust-tools',
+  -- require 'custom.rust-tools',
   -- require 'custom.chatgpt',
   -- require 'custom.git-conflict',
   require 'custom.format-on-save',
+  require 'custom.whichkey',
 }, {})
