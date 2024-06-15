@@ -11,6 +11,7 @@ vim.opt.fillchars = { fold = ' ' }
 vim.opt.foldmethod = 'indent'
 vim.opt.foldenable = false
 vim.opt.foldlevel = 99
+vim.opt.cursorline = true
 vim.o.hlsearch = false
 vim.wo.number = true
 vim.o.mouse = 'a'
@@ -20,12 +21,11 @@ vim.o.undofile = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.wo.signcolumn = 'yes'
-vim.wo.relativenumber = true
+vim.wo.relativenumber = false
 vim.o.updatetime = 250
 vim.o.timeoutlen = 300
 vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
-vim.o.language = 'en_US'
 vim.diagnostic.config({
   underline = true,
 })
@@ -43,7 +43,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- require 'custom.netrw'
+require 'custom.netrw'
 -- require 'custom.yankhighlight'
 require 'custom.keymaps'
 
@@ -51,30 +51,21 @@ require('lazy').setup({
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
   'tpope/vim-sleuth',
-  require 'custom.copilot',
   require 'custom.treesitter',
+  require 'custom.transparent',
+  require 'custom.copilot',
   require 'custom.tmux-navigation',
   require 'custom.lualine',
   require 'custom.gitsigns',
   require 'custom.prettier',
-  require 'custom.cursorline',
   require 'custom.lsp-config',
+  require 'custom.autotag',
   require 'custom.nvim-cmp',
   require 'custom.telescope',
-  -- require 'custom.trouble',
-  -- require 'custom.vim-apm',
-  -- require 'custom.git-blame',
   require 'custom.comment',
   require 'custom.autopairs',
   require 'custom.toggleterm',
-  -- require 'custom.visual-multi',
-  -- require 'custom.leap',
-  require 'custom.oil',
-  -- require 'custom.codeium',
   require 'custom.colorscheme',
-  -- require 'custom.rust-tools',
-  -- require 'custom.chatgpt',
-  -- require 'custom.git-conflict',
   require 'custom.format-on-save',
   require 'custom.whichkey',
 }, {})

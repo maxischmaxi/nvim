@@ -41,6 +41,11 @@ return {
           'typescript',
           'typescriptreact',
         },
+        init_options = {
+          preferences = {
+            disableSuggestions = true,
+          }
+        }
       },
 
       pyright = {

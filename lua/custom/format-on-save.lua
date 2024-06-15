@@ -9,10 +9,10 @@ return {
         pattern = { ".prettierrc", ".prettierrc.json", ".prettierrc.yaml", "prettier.config.*", ".prettierrc.js" },
         formatter = formatters.prettierd,
       }),
-      formatters.if_file_exists({
-        pattern = { "*.eslintrc.*", ".eslintrc.*" },
-        -- formatter = formatters.eslint_d_fix,
-      })
+      -- formatters.if_file_exists({
+      --   pattern = { "*.eslintrc.*", ".eslintrc.*" },
+      --   formatter = formatters.eslint_d_fix,
+      -- })
     }
 
     require("format-on-save").setup({
