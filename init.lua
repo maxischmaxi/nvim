@@ -68,6 +68,7 @@ require('lazy').setup({
   require 'custom.gitsigns',
   require 'custom.prettier',
   require 'custom.lsp-config',
+  require 'custom.dressing',
   require 'custom.nvim-cmp',
   require 'custom.autotag',
   require 'custom.telescope',
