@@ -3,6 +3,7 @@ return {
   branch = '0.1.x',
   dependencies = {
     'nvim-lua/plenary.nvim',
+    'nvim-telescope/telescope-ui-select.nvim',
     {
       'nvim-telescope/telescope-fzf-native.nvim',
       build = 'make',
@@ -20,10 +21,18 @@ return {
           "^node%_modules/*",
           "node%_modules/*",
         },
+      },
+      extensions = {
+        ["ui-select"] = {
+          require("telescope.themes").get_dropdown {
+
+          }
+        }
       }
     }
 
     pcall(require('telescope').load_extension, 'fzf')
+    pcall(require('telescope').load_extension, 'ui-select')
 
     vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
     vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
