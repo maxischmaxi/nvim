@@ -43,7 +43,7 @@ return {
       }
     end
 
-    set('n', '<leader>emj', emj, { desc = '[E]moji' })
+    set('n', 'emj', emj, { desc = '[E]moji' })
     set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
     set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
     set('n', '<leader>/', function()
