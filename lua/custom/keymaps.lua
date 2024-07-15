@@ -1,6 +1,5 @@
 local keyset = vim.keymap.set
 
-keyset('n', '<C-b>', ':Explore<CR>', { silent = true })
 keyset('n', 'n', 'nzzzv')
 keyset('n', 'N', 'Nzzzv')
 keyset('n', '<C-d>', '<C-d>zz')

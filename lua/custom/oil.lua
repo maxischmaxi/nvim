@@ -4,6 +4,10 @@ return {
     local nvim_tmux_nav = require 'nvim-tmux-navigation'
 
     require("oil").setup({
+      view_options = {
+        show_hidden = true,
+      },
+
       keymaps = {
         ["<C-l>"] = nvim_tmux_nav.NvimTmuxNavigateRight,
         ["<C-h>"] = nvim_tmux_nav.NvimTmuxNavigateLeft,

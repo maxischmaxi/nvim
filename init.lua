@@ -43,14 +43,24 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require 'custom.netrw'
--- require 'custom.yankhighlight'
+local uv = vim.loop
+
+vim.api.nvim_create_autocmd('VimEnter', {
+  callback = function()
+    if vim.env.TMUX_PLUGIN_MANAGER_PATH then
+      uv.spawn(vim.env.TMUX_PLUGIN_MANAGER_PATH .. '/tmux-window-name/scripts/rename_session_windows.py', {})
+    end
+  end,
+})
+
 require 'custom.keymaps'
 
 require('lazy').setup({
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
   'tpope/vim-sleuth',
+  require 'custom.oil',
+  require 'custom.flash',
   require 'custom.treesitter',
   require 'custom.transparent',
   require 'custom.copilot',

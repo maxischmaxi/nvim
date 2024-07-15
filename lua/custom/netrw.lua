@@ -4,7 +4,9 @@ local autocmd = vim.api.nvim_create_autocmd
 local options_append = {
   netrw_keepdir = 1,
   netrw_winsize = 17,
-  --netrw_banner = '0',
+  netrw_banner = '0',
+  netrw_sizestyle = 'H',
+  netrw_liststyle = 3,
   netrw_localmkdir = 'mkdir -p',
   netrw_localcopycmd = 'cp -r',
   netrw_localrmdir = 'rm -rf',
@@ -14,6 +16,9 @@ local options_append = {
 for k, v in pairs(options_append) do
   g[k] = v
 end
+
+local keyset = vim.keymap.set
+keyset('n', '<C-b>', ':Explore<CR>', { silent = true })
 
 autocmd('filetype', {
   pattern = 'netrw',
@@ -25,28 +30,12 @@ autocmd('filetype', {
       vim.keymap.set('n', lhs, rhs, { remap = true, buffer = true })
     end
 
-    bind('H', 'u')
-    bind('h', '-^')
-    bind('l', '<CR>')
     bind('.', 'gh')
-
-    bind('<TAB>', 'mf')
-    bind('<S-TAB>', 'mF')
-    bind('<leader><TAB>', 'mu')
-
-    bind('ff', '%:w<CR>:buffer #<CR>')
-    bind('fa', 'd')
-    bind('fr', 'R')
-    bind('fd', 'D')
-    bind('fc', 'mc')
-    bind('fC', 'mtmc')
-    bind('fx', 'mm')
-    bind('fX', 'mtmm')
-    bind('fe', 'mx')
-    bind('fm', ':echo "Marked files:\n" . join(netrw#Expose("netrwmarkfilelist"), "\n")<CR>')
-    bind('ft', ':echo "Target: " . netrw#Expose("netrwmftgt")<CR>')
-
     bind('q', ':Lexplore<CR>')
+    bind('l', nvim_tmux_nav.NvimTmuxNavigateRight)
+    bind('h', nvim_tmux_nav.NvimTmuxNavigateLeft)
+    bind('j', nvim_tmux_nav.NvimTmuxNavigateDown)
+    bind('k', nvim_tmux_nav.NvimTmuxNavigateUp)
 
     bind('<c-l>', nvim_tmux_nav.NvimTmuxNavigateRight)
     bind('<c-h>', nvim_tmux_nav.NvimTmuxNavigateLeft)

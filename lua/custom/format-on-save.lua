@@ -9,6 +9,10 @@ return {
         pattern = { ".prettierrc", ".prettierrc.json", ".prettierrc.yaml", "prettier.config.*", ".prettierrc.js" },
         formatter = formatters.prettierd,
       }),
+      formatters.if_file_exists({
+        pattern = { "biome.json" },
+        formatter = formatters.biome,
+      })
       -- formatters.if_file_exists({
       --   pattern = { "*.eslintrc.*", ".eslintrc.*" },
       --   formatter = formatters.eslint_d_fix,
