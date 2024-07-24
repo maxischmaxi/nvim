@@ -76,6 +76,6 @@ require('lazy').setup({
   require 'custom.autopairs',
   require 'custom.colorscheme',
   require 'custom.format-on-save',
-  require 'custom.error-lens',
-  require 'custom.whichkey',
+  -- require 'custom.error-lens',
+  -- require 'custom.whichkey',
 }, {})
