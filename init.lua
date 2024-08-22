@@ -1,7 +1,7 @@
 vim.g.mapleader = ' '
 vim.opt.colorcolumn = "80"
 vim.g.maplocalleader = ' '
-vim.o.wrap = true
+vim.o.wrap = false
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
 vim.o.softtabstop = 2
@@ -57,7 +57,7 @@ require 'custom.keymaps'
 
 require('lazy').setup({
   'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
+  -- 'tpope/vim-rhubarb',
   'tpope/vim-sleuth',
   require 'custom.oil',
   require 'custom.flash',
@@ -65,8 +65,9 @@ require('lazy').setup({
   require 'custom.copilot',
   require 'custom.tmux-navigation',
   require 'custom.lualine',
-  require 'custom.gitsigns',
-  require 'custom.prettier',
+  -- require 'custom.gitsigns',
+  -- require 'custom.prettier',
+  require 'custom.flutter-tools',
   require 'custom.lsp-config',
   require 'custom.dressing',
   require 'custom.nvim-cmp',

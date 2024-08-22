@@ -3,10 +3,10 @@ return {
   dependencies = {
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
-    'folke/neodev.nvim',
+    'folke/lazydev.nvim',
   },
   config = function()
-    require('neodev').setup()
+    require('lazydev').setup()
     require('mason').setup({
       ui = {
         icons = {
@@ -44,6 +44,7 @@ return {
         init_options = {
           preferences = {
             disableSuggestions = true,
+            includeCompletionsForModuleExports = false,
           }
         }
       },

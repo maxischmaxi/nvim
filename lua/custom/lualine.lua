@@ -5,7 +5,8 @@ return {
       options = {
         icons_enabled = false,
         -- theme = 'tokyonight',
-        theme = 'sonokai',
+        -- theme = 'sonokai',
+        theme = "moonfly",
         component_separators = '|',
         section_separators = '',
       },
