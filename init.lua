@@ -6,7 +6,7 @@ vim.o.tabstop = 2
 vim.o.shiftwidth = 2
 vim.o.softtabstop = 2
 vim.o.expandtab = true
-vim.opt.scrolloff = 20
+vim.opt.scrolloff = 99
 vim.opt.fillchars = { fold = ' ' }
 vim.opt.foldmethod = 'indent'
 vim.opt.foldenable = false
@@ -73,6 +73,7 @@ require('lazy').setup({
   require 'custom.nvim-cmp',
   require 'custom.autotag',
   require 'custom.telescope',
+  -- require 'custom.neoscroll',
   require 'custom.comment',
   require 'custom.autopairs',
   require 'custom.colorscheme',
