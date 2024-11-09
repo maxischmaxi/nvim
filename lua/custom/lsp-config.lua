@@ -19,6 +19,15 @@ return {
     require('mason-lspconfig').setup()
 
     local servers = {
+      tailwindcss = {
+        filetypes = {
+          'html',
+          'typescriptreact',
+          'javascriptreact',
+          'css'
+        }
+      },
+
       html = {
         filetypes = {
           'html',
@@ -65,9 +74,9 @@ return {
       eslint = {
         enable = true,
         format = {
-          enable = true,
+          enable = false,
         },
-        autoFixOnSave = true,
+        autoFixOnSave = false,
         packageManager = 'npm',
         lintTask = {
           enable = true,

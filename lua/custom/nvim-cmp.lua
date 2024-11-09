@@ -5,6 +5,7 @@ return {
     'saadparwaiz1/cmp_luasnip',
     'hrsh7th/cmp-nvim-lsp',
     'rafamadriz/friendly-snippets',
+    'brenoprata10/nvim-highlight-colors',
   },
   config = function()
     local cmp = require 'cmp'
@@ -21,6 +22,10 @@ return {
       },
       completion = {
         completeopt = 'menu,menuone,noinsert',
+      },
+      formatting = {
+        format = require("nvim-highlight-colors").format,
+        fields = { 'abbr', 'kind', 'menu' },
       },
       mapping = cmp.mapping.preset.insert {
         ['<C-n>'] = cmp.mapping.select_next_item(),

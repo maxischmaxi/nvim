@@ -4,30 +4,12 @@ return {
     local formatters = require("format-on-save.formatters")
     local vim_notify = require("format-on-save.error-notifiers.vim-notify")
 
-    -- ---@type ErrorNotifier
-    -- local error_notifier = {
-    --   show = function(opts)
-    --     -- use opts.title and opts.body
-    --   end,
-    --   hide = function()
-    --     -- hide the error when it's been resolved
-    --   end,
-    -- }
-
     local defaultFormatters = {
       formatters.lsp,
-      formatters.if_file_exists({
-        pattern = { ".prettierrc", ".prettierrc.json", ".prettierrc.yaml", "prettier.config.*", ".prettierrc.js" },
-        formatter = formatters.prettierd,
-      }),
       formatters.if_file_exists({
         pattern = { "biome.json" },
         formatter = formatters.biome,
       })
-      -- formatters.if_file_exists({
-      --   pattern = { "*.eslintrc.*", ".eslintrc.*" },
-      --   formatter = formatters.eslint_d_fix,
-      -- })
     }
 
     require("format-on-save").setup({

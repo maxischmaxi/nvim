@@ -6,7 +6,7 @@ vim.o.tabstop = 2
 vim.o.shiftwidth = 2
 vim.o.softtabstop = 2
 vim.o.expandtab = true
-vim.opt.scrolloff = 99
+vim.opt.scrolloff = 20
 vim.opt.fillchars = { fold = ' ' }
 vim.opt.foldmethod = 'indent'
 vim.opt.foldenable = false
@@ -26,6 +26,7 @@ vim.o.updatetime = 250
 vim.o.timeoutlen = 300
 vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
+vim.opt.termguicolors = true
 vim.diagnostic.config({
   underline = true,
 })
@@ -56,6 +57,7 @@ vim.api.nvim_create_autocmd('VimEnter', {
 require 'custom.keymaps'
 
 require('lazy').setup({
+  require 'custom.colorscheme',
   'tpope/vim-fugitive',
   -- 'tpope/vim-rhubarb',
   'tpope/vim-sleuth',
@@ -66,7 +68,6 @@ require('lazy').setup({
   require 'custom.tmux-navigation',
   require 'custom.lualine',
   -- require 'custom.gitsigns',
-  -- require 'custom.prettier',
   require 'custom.flutter-tools',
   require 'custom.lsp-config',
   require 'custom.dressing',
@@ -74,9 +75,9 @@ require('lazy').setup({
   require 'custom.autotag',
   require 'custom.telescope',
   -- require 'custom.neoscroll',
+  require 'custom.tailwindcss',
   require 'custom.comment',
   require 'custom.autopairs',
-  require 'custom.colorscheme',
   require 'custom.format-on-save',
   -- require 'custom.error-lens',
   -- require 'custom.whichkey',

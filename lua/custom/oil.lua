@@ -23,7 +23,6 @@ return {
         ["<C-j>"] = nvim_tmux_nav.NvimTmuxNavigateDown,
         ["<C-k>"] = nvim_tmux_nav.NvimTmuxNavigateUp,
         ["<C-\\>"] = nvim_tmux_nav.NvimTmuxNavigateLastActive,
-        ["<C-space>"] = nvim_tmux_nav.NvimTmuxNavigateNext,
       }
     })
 

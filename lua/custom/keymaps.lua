@@ -1,27 +1,9 @@
-local function lazy(keys)
-  keys = vim.api.nvim_replace_termcodes(keys, true, false, true)
-  return function()
-    local current_line = vim.api.nvim_win_get_cursor(0)[1]
-    local lines = vim.api.nvim_buf_line_count(0)
-
-    if current_line == lines then
-      vim.api.nvim_feedkeys('20k', 'n', false)
-      return
-    end
-
-    local old = vim.o.lazyredraw
-    vim.o.lazyredraw = true
-    vim.api.nvim_feedkeys(keys, 'nx', false)
-    vim.o.lazyredraw = old
-  end
-end
-
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 -- vim.keymap.set('n', '<C-d>', '<C-d>zz')
 -- vim.keymap.set('n', '<C-u>', '<C-u>zz')
-vim.keymap.set('n', '<c-d>', lazy('<c-d>zz'), { desc = 'Scroll down half screen' })
-vim.keymap.set('n', '<c-u>', lazy('<c-u>zz'), { desc = 'Scroll down half screen' })
+vim.keymap.set('n', '<c-d>', '<c-d>zz', { desc = 'Scroll down half screen' })
+vim.keymap.set('n', '<c-u>', '<c-u>zz', { desc = 'Scroll down half screen' })
 vim.keymap.set('n', 'º', ':m .+1<CR>==', { silent = true })
 vim.keymap.set('i', 'º', '<Esc>:m .+1<CR>==', { silent = true })
 vim.keymap.set('v', 'º', ":m '>+1<CR>gv=gv", { silent = true })

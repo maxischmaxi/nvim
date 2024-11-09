@@ -32,6 +32,7 @@ return {
 
     vim.cmd [[
     colorscheme tokyonight
+    highlight Visual guibg=#33467C
     ]]
   end,
 }
