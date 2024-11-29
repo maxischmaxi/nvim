@@ -31,6 +31,8 @@ vim.diagnostic.config({
   underline = true,
 })
 
+vim.g.loaded_perl_provider = 0
+
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
@@ -57,9 +59,9 @@ vim.api.nvim_create_autocmd('VimEnter', {
 require 'custom.keymaps'
 
 require('lazy').setup({
+  require 'custom.luasnip',
   require 'custom.colorscheme',
   'tpope/vim-fugitive',
-  -- 'tpope/vim-rhubarb',
   'tpope/vim-sleuth',
   require 'custom.oil',
   require 'custom.flash',
@@ -67,18 +69,14 @@ require('lazy').setup({
   require 'custom.copilot',
   require 'custom.tmux-navigation',
   require 'custom.lualine',
-  -- require 'custom.gitsigns',
   require 'custom.flutter-tools',
   require 'custom.lsp-config',
   require 'custom.dressing',
   require 'custom.nvim-cmp',
   require 'custom.autotag',
   require 'custom.telescope',
-  -- require 'custom.neoscroll',
   require 'custom.tailwindcss',
   require 'custom.comment',
   require 'custom.autopairs',
   require 'custom.format-on-save',
-  -- require 'custom.error-lens',
-  -- require 'custom.whichkey',
 }, {})

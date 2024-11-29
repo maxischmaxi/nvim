@@ -3,12 +3,13 @@ return {
   config = function()
     require('lualine').setup {
       options = {
-        icons_enabled = false,
+        icons_enabled = true,
         -- theme = 'tokyonight',
         -- theme = 'sonokai',
-        theme = "moonfly",
-        component_separators = '|',
-        section_separators = '',
+        -- theme = "moonfly",
+        theme = "horizon",
+        component_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
       },
       sections = {
         lualine_a = {
