@@ -9,6 +9,14 @@ return {
       formatters.if_file_exists({
         pattern = { "biome.json" },
         formatter = formatters.biome,
+      }),
+      formatters.if_file_exists({
+        pattern = { "prettier.config.js", ".prettierrc", ".prettierrc.js" },
+        formatter = formatters.prettierd,
+      }),
+      formatters.if_file_exists({
+        pattern = { "eslint.config.mjs", "eslint.config.js", ".eslintrc", ".eslintrc.js" },
+        formatter = formatters.eslint_d_fix,
       })
     }
 

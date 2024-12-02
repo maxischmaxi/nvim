@@ -107,10 +107,8 @@ return {
 
       eslint = {
         enable = true,
-        format = {
-          enable = false,
-        },
-        autoFixOnSave = false,
+        format = false,
+        autoFixOnSave = true,
         packageManager = 'npm',
         lintTask = {
           enable = true,
