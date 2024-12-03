@@ -11,7 +11,7 @@ return {
         formatter = formatters.biome,
       }),
       formatters.if_file_exists({
-        pattern = { "prettier.config.js", ".prettierrc", ".prettierrc.js" },
+        pattern = { "prettier.config.mjs", "prettier.config.js", ".prettierrc", ".prettierrc.js" },
         formatter = formatters.prettierd,
       }),
       formatters.if_file_exists({

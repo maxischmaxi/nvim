@@ -1,5 +1,5 @@
 vim.g.mapleader = ' '
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "120"
 vim.g.maplocalleader = ' '
 vim.o.wrap = false
 vim.o.tabstop = 2
@@ -79,4 +79,6 @@ require('lazy').setup({
   require 'custom.comment',
   require 'custom.autopairs',
   require 'custom.format-on-save',
+  -- require 'custom.neoformat',
+  require 'custom.prettier',
 }, {})
