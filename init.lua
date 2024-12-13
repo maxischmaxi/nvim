@@ -78,7 +78,7 @@ require('lazy').setup({
   require 'custom.tailwindcss',
   require 'custom.comment',
   require 'custom.autopairs',
-  require 'custom.floatterm',
+  -- require 'custom.floatterm',
   require 'custom.format-on-save',
   require 'custom.gitsigns',
   -- require 'custom.neoformat',
