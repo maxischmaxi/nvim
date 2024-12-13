@@ -56,28 +56,51 @@ vim.api.nvim_create_autocmd('VimEnter', {
   end,
 })
 
-require 'custom.keymaps'
+vim.keymap.set('n', 'n', 'nzzzv')
+vim.keymap.set('n', 'N', 'Nzzzv')
+vim.keymap.set('n', '<c-d>', '<c-d>zz', { desc = 'Scroll down half screen' })
+vim.keymap.set('n', '<c-u>', '<c-u>zz', { desc = 'Scroll down half screen' })
+vim.keymap.set('n', 'º', ':m .+1<CR>==', { silent = true })
+vim.keymap.set('i', 'º', '<Esc>:m .+1<CR>==', { silent = true })
+vim.keymap.set('v', 'º', ":m '>+1<CR>gv=gv", { silent = true })
+vim.keymap.set('n', '∆', ':m .-2<CR>==', { silent = true })
+vim.keymap.set('i', '∆', '<Esc>:m .-2<CR>==', { silent = true })
+vim.keymap.set('v', '∆', ":m '<-2<CR>gv=gv", { silent = true })
+vim.keymap.set('n', '<leader>+', ':exe "vertical resize " . (winwidth(0) * 3/2)<CR>', { silent = true })
+vim.keymap.set('n', '<leader>-', ':exe "vertical resize " . (winwidth(0) * 2/3)<CR>', { silent = true })
+
+vim.keymap.set('n', '<c-l>', '<c-w><c-l>', { silent = true })
+vim.keymap.set('n', '<c-h>', '<c-w><c-h>', { silent = true })
+vim.keymap.set('n', '<c-j>', '<c-w><c-j>', { silent = true })
+vim.keymap.set('n', '<c-k>', '<c-w><c-k>', { silent = true })
+
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 require('lazy').setup({
-  require 'custom.luasnip',
-  require 'custom.colorscheme',
-  'tpope/vim-fugitive',
   'tpope/vim-sleuth',
+  require 'custom.colorscheme',
   require 'custom.oil',
   require 'custom.flash',
   require 'custom.treesitter',
   require 'custom.copilot',
   require 'custom.tmux-navigation',
   require 'custom.lualine',
-  require 'custom.flutter-tools',
   require 'custom.lsp-config',
-  require 'custom.dressing',
+  -- require 'custom.dressing',
   require 'custom.nvim-cmp',
   require 'custom.autotag',
-  require 'custom.telescope',
-  require 'custom.tailwindcss',
-  require 'custom.comment',
   require 'custom.autopairs',
+  require 'custom.telescope',
+  -- require 'custom.tailwindcss',
+  require 'custom.comment',
   -- require 'custom.floatterm',
   require 'custom.format-on-save',
   require 'custom.gitsigns',
