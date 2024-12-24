@@ -29,6 +29,10 @@ vim.o.termguicolors = true
 vim.opt.termguicolors = true
 vim.diagnostic.config({
   underline = true,
+  virtual_text = false,
+  signs = true,
+  update_in_insert = false,
+  severity_sort = true,
 })
 
 vim.g.loaded_perl_provider = 0

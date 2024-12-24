@@ -8,6 +8,15 @@ return {
   config = function()
     require('telescope').setup {
       defaults = {
+        ripgrep_arguments = {
+          '--hidden',
+          '--no-ignore',
+          '--follow',
+          '--column',
+          '--line-number',
+          '--color=always',
+          '--smart-case',
+        },
         file_ignore_patterns = {
           "./node%_modules/*",
           "node%_modules",
