@@ -1,18 +1,28 @@
 return {
-  "scottmckendry/cyberdream.nvim",
+  "folke/tokyonight.nvim",
   lazy = false,
   priority = 1000,
+  opts = {},
   config = function()
-    require("cyberdream").setup({
-      transparent = false,
-      italic_comments = true,
-      borderless_telescope = false,
-      terminal_colors = true,
-    })
-
-    vim.cmd [[colorscheme cyberdream]]
+    vim.cmd [[colorscheme tokyonight]]
   end,
 }
+
+-- return {
+--   "scottmckendry/cyberdream.nvim",
+--   lazy = false,
+--   priority = 1000,
+--   config = function()
+--     require("cyberdream").setup({
+--       transparent = false,
+--       italic_comments = true,
+--       borderless_telescope = false,
+--       terminal_colors = true,
+--     })
+--
+--     vim.cmd [[colorscheme cyberdream]]
+--   end,
+-- }
 
 -- return {
 --   "folke/tokyonight.nvim",

@@ -1,4 +1,5 @@
 local g = vim.g
+local keyset = vim.keymap.set
 local autocmd = vim.api.nvim_create_autocmd
 
 local options_append = {
@@ -17,7 +18,6 @@ for k, v in pairs(options_append) do
   g[k] = v
 end
 
-local keyset = vim.keymap.set
 keyset('n', '<C-b>', ':Explore<CR>', { silent = true })
 
 autocmd('filetype', {
