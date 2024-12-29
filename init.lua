@@ -1,32 +1,70 @@
-vim.g.mapleader = ' '
-vim.opt.colorcolumn = "120"
-vim.g.maplocalleader = ' '
-vim.o.wrap = false
-vim.o.tabstop = 2
-vim.o.shiftwidth = 2
-vim.o.softtabstop = 2
-vim.o.expandtab = true
-vim.opt.scrolloff = 20
-vim.opt.fillchars = { fold = ' ' }
-vim.opt.foldmethod = 'indent'
-vim.opt.foldenable = false
-vim.opt.foldlevel = 99
-vim.opt.cursorline = true
-vim.o.hlsearch = false
-vim.wo.number = true
-vim.o.mouse = 'a'
-vim.o.clipboard = 'unnamedplus'
-vim.o.breakindent = true
-vim.o.undofile = true
-vim.o.ignorecase = true
-vim.o.smartcase = true
-vim.wo.signcolumn = 'yes'
-vim.wo.relativenumber = false
-vim.o.updatetime = 250
-vim.o.timeoutlen = 300
-vim.o.completeopt = 'menuone,noselect'
-vim.o.termguicolors = true
-vim.opt.termguicolors = true
+local global_options = {
+  mapleader = ' ',
+  loaded_perl_provider = 0,
+  maplocalleader = ' ',
+  netrw_keepdir = 1,
+  netrw_winsize = 17,
+  netrw_banner = '0',
+  netrw_sizestyle = 'H',
+  netrw_liststyle = 3,
+  netrw_localmkdir = 'mkdir -p',
+  netrw_localcopycmd = 'cp -r',
+  netrw_localrmdir = 'rm -rf',
+  netrw_list_hide = [['\(^\|\s\s\)\zs\.\S\+']],
+}
+
+for k, v in pairs(global_options) do
+  vim.g[k] = v
+end
+
+local opt_options = {
+  colorcolumn = "120",
+  scrolloff = 20,
+  fillchars = { fold = ' ' },
+  foldmethod = 'indent',
+  foldenable = false,
+  foldlevel = 99,
+  cursorline = true,
+  termguicolors = true,
+}
+
+for k, v in pairs(opt_options) do
+  vim.opt[k] = v
+end
+
+local o_options = {
+  wrap = false,
+  tabstop = 2,
+  shiftwidth = 2,
+  softtabstop = 2,
+  expandtab = true,
+  hlsearch = false,
+  mouse = 'a',
+  clipboard = 'unnamedplus',
+  breakindent = true,
+  undofile = true,
+  ignorecase = true,
+  smartcase = true,
+  updatetime = 250,
+  timeoutlen = 300,
+  completeopt = 'menuone,noselect',
+  termguicolors = true,
+}
+
+for k, v in pairs(o_options) do
+  vim.o[k] = v
+end
+
+local wo_options = {
+  number = true,
+  signcolumn = 'yes',
+  relativenumber = false,
+}
+
+for k, v in pairs(wo_options) do
+  vim.wo[k] = v
+end
+
 vim.diagnostic.config({
   underline = true,
   virtual_text = false,
@@ -34,8 +72,6 @@ vim.diagnostic.config({
   update_in_insert = false,
   severity_sort = true,
 })
-
-vim.g.loaded_perl_provider = 0
 
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
@@ -49,16 +85,6 @@ if not vim.loop.fs_stat(lazypath) then
   }
 end
 vim.opt.rtp:prepend(lazypath)
-
-local uv = vim.loop
-
-vim.api.nvim_create_autocmd('VimEnter', {
-  callback = function()
-    if vim.env.TMUX_PLUGIN_MANAGER_PATH then
-      uv.spawn(vim.env.TMUX_PLUGIN_MANAGER_PATH .. '/tmux-window-name/scripts/rename_session_windows.py', {})
-    end
-  end,
-})
 
 local set = vim.keymap.set
 
@@ -117,23 +143,18 @@ vim.api.nvim_create_autocmd('filetype', {
 require('lazy').setup({
   'tpope/vim-sleuth',
   require 'custom.colorscheme',
-  -- require 'custom.oil',
   require 'custom.flash',
   require 'custom.treesitter',
   require 'custom.copilot',
   require 'custom.tmux-navigation',
   require 'custom.lualine',
   require 'custom.lsp-config',
-  -- require 'custom.dressing',
   require 'custom.nvim-cmp',
   require 'custom.autotag',
   require 'custom.autopairs',
   require 'custom.telescope',
-  -- require 'custom.tailwindcss',
   require 'custom.comment',
-  -- require 'custom.floatterm',
   require 'custom.format-on-save',
   require 'custom.gitsigns',
-  -- require 'custom.neoformat',
   require 'custom.prettier',
 }, {})
