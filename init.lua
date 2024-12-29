@@ -18,7 +18,6 @@ for k, v in pairs(global_options) do
 end
 
 local opt_options = {
-  colorcolumn = "120",
   scrolloff = 20,
   fillchars = { fold = ' ' },
   foldmethod = 'indent',
@@ -154,7 +153,7 @@ require('lazy').setup({
   require 'custom.autopairs',
   require 'custom.telescope',
   require 'custom.comment',
-  require 'custom.format-on-save',
+  -- require 'custom.format-on-save',
   require 'custom.gitsigns',
-  require 'custom.prettier',
+  -- require 'custom.prettier',
 }, {})

@@ -6,12 +6,12 @@ return {
     local defaultFormatters = {
       formatters.lsp,
       formatters.if_file_exists({
-        pattern = { "prettier.config.mjs", "prettier.config.js", ".prettierrc", ".prettierrc.js" },
+        pattern = { "prettier.config.mjs", ".prettier.config.mjs", "prettier.config.js", ".prettier.config.js", ".prettierrc", ".prettierrc.js", ".prettierrc.json" },
         formatter = formatters.prettierd,
       }),
       formatters.if_file_exists({
-        pattern = { "eslint.config.mjs", "eslint.config.js", ".eslintrc", ".eslintrc.js" },
-        formatter = formatters.lazy_eslint_d_fix,
+        pattern = { "eslint.config.mjs", ".eslint.config.mjs", "eslint.config.js", ".eslint.config.js", ".eslint.config.js", ".eslintrc", ".eslintrc.js", ".eslintrc.json" },
+        formatter = formatters.eslint_d_fix,
       })
     }
 

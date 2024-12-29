@@ -98,14 +98,23 @@ return {
       },
 
       eslint = {
-        enable = true,
-        format = false,
-        autoFixOnSave = false,
-        packageManager = 'npm',
-        lintTask = {
-          enable = true,
-        },
-      },
+                enable = true,
+                format = true,
+                autoFixOnSave = true,
+                packageManager = 'npm',
+                lintTask = {
+                  enable = true,
+                },
+                codeAction = {
+                  disableRuleComment = {
+                    enable = true,
+                    location = "separateLine"
+                  },
+                  showDocumentation = {
+                    enable = true
+                  }
+                }
+              },
 
       rust_analyzer = {
         diagnostics = {
@@ -124,12 +133,32 @@ return {
       automatic_installation = true,
       handlers = {
         function(server_name)
-          require('lspconfig')[server_name].setup {
-            capabilities = capabilities,
-            on_attach = on_attach,
-            settings = servers[server_name],
-            filetypes = (servers[server_name] or {}).filetypes,
-          }
+          if server_name == 'eslint' then
+            require('lspconfig').eslint.setup {
+              capabilities = capabilities,
+              flags = {
+                debounce_text_changes = 1000,
+                allow_incremental_sync = false,
+              },
+              on_attach = function(client, bufnr)
+                on_attach(client, bufnr)
+                vim.api.nvim_create_autocmd("BufWritePre",{
+                  buffer = bufnr,
+                  command = "EslintFixAll",
+                })
+              end,
+              cmd = { "vscode-eslint-language-server", "--stdio"},
+              settings = servers[server_name],
+              filetypes = (servers[server_name] or {}).filetypes,
+            }
+          else
+            require('lspconfig')[server_name].setup {
+              capabilities = capabilities,
+              on_attach = on_attach,
+              settings = servers[server_name],
+              filetypes = (servers[server_name] or {}).filetypes,
+            }
+          end
         end,
       }
     }
