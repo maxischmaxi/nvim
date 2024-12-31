@@ -26,6 +26,7 @@ return {
       formatting = {
         format = require("nvim-highlight-colors").format,
         fields = { 'abbr', 'kind', 'menu' },
+        expandable_indicator = true,
       },
       mapping = cmp.mapping.preset.insert {
         ['<C-n>'] = cmp.mapping.select_next_item(),
@@ -50,7 +51,7 @@ return {
       },
       sources = {
         { name = 'nvim_lsp' },
-        { name = 'luasnip' },
+        -- { name = 'luasnip' },
         { name = 'buffer' },
         { name = 'path' },
       },
