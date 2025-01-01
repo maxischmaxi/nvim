@@ -24,6 +24,7 @@ local opt_options = {
   foldlevel = 99,
   cursorline = true,
   termguicolors = true,
+  guicursor = '',
 }
 
 for k, v in pairs(opt_options) do
