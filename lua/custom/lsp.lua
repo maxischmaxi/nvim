@@ -125,17 +125,6 @@ local on_attach = function(client, bufnr)
     })
   end
 
-  vim.api.nvim_create_autocmd("BufWritePost", {
-    callback = function()
-      local format = require("format-on-save")
-      format.format()
-      format.restore_cursors()
-    end,
-    group = format_group,
-    pattern = "*",
-  })
-
-
   vim.api.nvim_create_autocmd('TextYankPost', {
     callback = function()
       vim.highlight.on_yank()
@@ -188,8 +177,8 @@ return {
     })
 
     require("format-on-save").setup({
-      auto_commands = false,
-      user_commands = false,
+      auto_commands = true,
+      user_commands = true,
       exclude_path_patterns = {
         "/node_modules/",
         ".local/share/nvim/lazy",
