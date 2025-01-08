@@ -52,13 +52,6 @@ local servers = {
   },
 
   eslint = {
-    enable = true,
-    format = true,
-    autoFixOnSave = false,
-    packageManager = 'npm',
-    lintTask = {
-      enable = true,
-    },
     codeAction = {
       disableRuleComment = {
         enable = true,
@@ -67,6 +60,27 @@ local servers = {
       showDocumentation = {
         enable = true
       }
+    },
+    codeActionOnSave = {
+      enable = true,
+      mode = "all"
+    },
+    experimental = {
+      useFlatConfig = false,
+    },
+    format = true,
+    nodePath = "",
+    onIgnoredFiles = "off",
+    problems = {
+      shortenToSingleLine = false
+    },
+    quiet = false,
+    rulesCustomizations = {},
+    run = "onType",
+    useESLintClass = false,
+    validate = "on",
+    workingDirectory = {
+      mode = "location"
     }
   },
 
@@ -117,42 +131,48 @@ local servers = {
 }
 
 local function file_exists(filepath)
-  local stat = vim.loop.fs_stat(filepath)
-  return stat ~= nil and stat.type == 'file'
+  local f=io.open(filepath,"r")
+   if f~=nil then io.close(f) return true else return false end
 end
 
-local function findEslintConfig(start_dir)
-  local eslint_files = {
-    ".eslintrc",
-    ".eslintrc.json",
-    ".eslintrc.yaml",
-    ".eslintrc.yml",
-    ".eslintrc.js",
-    "eslint.config.mjs",
-    "eslint.config.js",
-  }
-
-  local dir = start_dir or vim.fn.getcwd()
-
-  while dir do
-    for _, file in ipairs(eslint_files) do
-      local path = dir .. '/' .. file
-      if file_exists(path) then
-        return path
-      end
-    end
-
-    local parent_dir = vim.fn.fnamemodify(dir, ":h")
-    if dir == parent_dir then
-      break
-    end
-    dir = parent_dir
-  end
-
-  return nil
+local function isempty(s)
+  return s == nil or s == ''
 end
 
-local function findPrettierConfig(start_dir)
+-- local function findEslintConfig()
+--   local eslint_files = {
+--     ".eslintrc",
+--     ".eslintrc.json",
+--     ".eslintrc.yaml",
+--     ".eslintrc.yml",
+--     ".eslintrc.js",
+--     "eslint.config.mjs",
+--     "eslint.config.js",
+--   }
+--
+--   local dir = vim.fn.getcwd()
+--
+--   for _, file in ipairs(eslint_files) do
+--     local path = dir .. '/' .. file
+--     if file_exists(path) then
+--       return path
+--     end
+--   end
+--
+--   local project_dir = dir .. '/project'
+--
+--   for _, file in ipairs(eslint_files) do
+--     local path = project_dir .. '/' .. file
+--     if file_exists(path) then
+--       vim.notfy("Found eslint config: " .. path)
+--       return path
+--     end
+--   end
+--
+--   return nil
+-- end
+
+local function findPrettierConfig()
   local prettier_files = {
     ".prettierrc",
     ".prettierrc.json",
@@ -163,27 +183,28 @@ local function findPrettierConfig(start_dir)
     "prettier.config.js",
   }
 
-  local dir = start_dir or vim.fn.getcwd()
+  local dir = vim.fn.getcwd()
 
-  while dir do
-    for _, file in ipairs(prettier_files) do
-      local path = dir .. '/' .. file
-      if file_exists(path) then
-        return path
-      end
+  for _, file in ipairs(prettier_files) do
+    local path = dir .. '/' .. file
+    if file_exists(path) then
+      return path
     end
+  end
 
-    local parent_dir = vim.fn.fnamemodify(dir, ":h")
-    if dir == parent_dir then
-      break
+  local project_dir = dir .. '/project'
+
+  for _, file in ipairs(prettier_files) do
+    local path = project_dir .. '/' .. file
+    if file_exists(path) then
+      return path
     end
-    dir = parent_dir
   end
 
   return nil
 end
 
-local function findStylelintConfig(start_dir)
+local function findStylelintConfig()
   local stylelint_files = {
     ".stylelintrc",
     ".stylelintrc.json",
@@ -194,40 +215,31 @@ local function findStylelintConfig(start_dir)
     "stylelint.config.js",
   }
 
-  local dir = start_dir or vim.fn.getcwd()
-
-  while dir do
-    for _, file in ipairs(stylelint_files) do
-      local path = dir .. '/' .. file
-      if file_exists(path) then
-        return path
-      end
+  local dir = vim.fn.getcwd()
+  for _, file in ipairs(stylelint_files) do
+    local path = dir .. '/' .. file
+    if file_exists(path) then
+      return path
     end
+  end
 
-    local parent_dir = vim.fn.fnamemodify(dir, ":h")
-    if dir == parent_dir then
-      break
+  local project_dir = dir .. '/project'
+  for _, file in ipairs(stylelint_files) do
+    local path = project_dir .. '/' .. file
+    if file_exists(path) then
+      return path
     end
-    dir = parent_dir
   end
 
   return nil
 end
 
-local function findCompileCommands(start_dir)
-  local dir = start_dir or vim.fn.getcwd()
+local function findCompileCommands()
+  local dir = vim.fn.getcwd()
 
-  while dir do
-    local path = dir .. '/compile_commands.json'
-    if file_exists(path) then
-      return path
-    end
-
-    local parent_dir = vim.fn.fnamemodify(dir, ":h")
-    if dir == parent_dir then
-      break
-    end
-    dir = parent_dir
+  local path = dir .. '/compile_commands.json'
+  if file_exists(path) then
+    return path
   end
 
   return nil
@@ -256,10 +268,8 @@ return {
       group = vim.api.nvim_create_augroup("FormatCssOnSave", { clear = true }),
       pattern = "*.{css,scss,less,sass}",
       callback = function()
-        local dir = vim.fn.expand('%:p:h')
-        local stylelint_file = findStylelintConfig(dir)
+        local stylelint_file = findStylelintConfig()
         if stylelint_file then
-          -- vim.notify("Found stylelint config: " .. stylelint_file)
           local view = vim.fn.winsaveview()
           vim.cmd("silent! !stylelint --config " .. stylelint_file .. " --fix %")
           vim.cmd("edit!")
@@ -272,10 +282,8 @@ return {
       group = vim.api.nvim_create_augroup("FormatCOnSave", { clear = true }),
       pattern = "*.{c,h,cpp,hpp}",
       callback = function()
-        local dir = vim.fn.expand('%:p:h')
-        local compile_commands = findCompileCommands(dir)
+        local compile_commands = findCompileCommands()
         if compile_commands then
-          -- vim.notify("Found compile_commands.json: " .. compile_commands)
           local view = vim.fn.winsaveview()
           vim.cmd("silent! !clang-format -assume-filename=compile_commands.json -style=file -i %")
           vim.cmd("edit!")
@@ -285,40 +293,17 @@ return {
     })
 
     vim.api.nvim_create_autocmd(autocmd, {
-      group = vim.api.nvim_create_augroup("FormatEslintOnSave", { clear = true }),
-      pattern = "*.{js,jsx,ts,tsx}",
+      group = vim.api.nvim_create_augroup("FormatRustOnSave", { clear = true }),
+      pattern = "*.rs",
       callback = function()
-        local dir = vim.fn.expand('%:p:h')
-        local eslint_config = findEslintConfig(dir)
-        if eslint_config then
-          -- vim.notify("Found eslint config: " .. eslint_config)
-          local view = vim.fn.winsaveview()
-          vim.cmd("silent! !eslint --config " .. eslint_config .. " --fix %")
-          vim.cmd("edit!")
-          vim.fn.winrestview(view)
-        end
+        local view = vim.fn.winsaveview()
+        vim.cmd("!cargo fmt")
+        vim.cmd("edit!")
+        vim.fn.winrestview(view)
       end
     })
 
-    vim.api.nvim_create_autocmd(autocmd, {
-      group = vim.api.nvim_create_augroup("FormatPrettierOnSave", { clear = true }),
-      pattern = "*",
-      callback = function()
-        local dir = vim.fn.expand('%:p:h')
-        local prettier_config = findPrettierConfig(dir)
-        local view = vim.fn.winsaveview()
-        if prettier_config then
-          -- vim.notify("Found prettier config: " .. prettier_config)
-          vim.cmd("silent! !prettier % --config " .. prettier_config .. " --write")
-          vim.cmd("edit!")
-        else
-          -- vim.notify("No prettier config found, using default")
-          vim.cmd("silent! !prettier % --write")
-          vim.cmd("edit!")
-        end
-        vim.fn.winrestview(view)
-      end,
-    })
+    
 
     require('mason').setup({
       ui = {
@@ -371,6 +356,22 @@ return {
 
                 vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
               end
+
+              vim.api.nvim_create_autocmd(autocmd, {
+                group = vim.api.nvim_create_augroup("FormatPrettierOnSave", { clear = true }),
+                buffer = bufnr,
+                callback = function()
+                  local prettier_config = findPrettierConfig()
+
+                  if isempty(prettier_config) then
+                    vim.cmd("silent! !prettier % --print-width 80 --tab-width 4 --write")
+                    vim.cmd("edit!")
+                  else
+                    vim.cmd("silent! !prettier % --config " .. prettier_config .. " --write")
+                    vim.cmd("edit!")
+                  end
+                end,
+              })
 
               nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
               nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
