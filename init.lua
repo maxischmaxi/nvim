@@ -21,8 +21,9 @@ local opt_options = {
     foldenable = false,
     foldlevel = 99,
     cursorline = true,
-    termguicolors = true
+    termguicolors = true,
     -- guicursor = '',
+    clipboard = 'unnamedplus'
 }
 
 for k, v in pairs(opt_options) do vim.opt[k] = v end
@@ -33,9 +34,8 @@ local o_options = {
     shiftwidth = 4,
     softtabstop = 4,
     expandtab = true,
-    hlsearch = false,
+    hlsearch = true,
     mouse = 'a',
-    clipboard = 'unnamedplus',
     breakindent = true,
     undofile = true,
     ignorecase = true,
@@ -115,5 +115,6 @@ require('lazy').setup({
     require 'custom.copilot', require 'custom.flash', require 'custom.gitsigns',
     require 'custom.lsp', require 'custom.lualine', require 'custom.nvim-cmp',
     require 'custom.telescope', require 'custom.tmux-navigation',
-    require 'custom.treesitter'
+    require 'custom.treesitter', require 'custom.dap',
+    require 'custom.fugitive', require 'custom.gleam'
 }, {})

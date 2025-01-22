@@ -72,6 +72,7 @@ vim.api.nvim_create_autocmd(autocmd, {
     pattern = "*.{css,scss,less,sass}",
     callback = function()
         local stylelint_file = findStylelintConfig()
+
         if stylelint_file then
             vim.cmd("silent! !stylelint --config " .. stylelint_file ..
                         " --fix %")

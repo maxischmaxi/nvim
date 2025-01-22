@@ -1,14 +1,14 @@
 return {
-  "folke/tokyonight.nvim",
-  lazy = false,
-  priority = 1000,
-  opts = {},
-  config = function()
-    vim.cmd [[
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+    config = function()
+        vim.cmd [[
       colorscheme tokyonight
       highlight Visual guibg=#33467C
     ]]
-  end,
+    end
 }
 
 -- return {

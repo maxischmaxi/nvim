@@ -68,7 +68,11 @@ return {
         'folke/lazydev.nvim'
     },
     config = function()
-        require('lazydev').setup()
+        require('lazydev').setup({
+            library = {"nvim-dap-ui"},
+            enabled = true,
+            debug = false
+        })
 
         vim.api.nvim_create_autocmd('TextYankPost', {
             callback = function() vim.highlight.on_yank() end,
