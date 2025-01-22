@@ -105,7 +105,8 @@ set('n', '<leader>e', vim.diagnostic.open_float,
 set('n', '<leader>q', vim.diagnostic.setloclist,
     {desc = 'Open diagnostics list'})
 
-set('n', '<c-b>', ':Explore<CR>', {silent = true})
+-- set('n', '<c-b>', ':Explore<CR>', {silent = true})
+set('n', '<c-b>', ':Oil<CR>', {silent = true})
 
 require 'custom.formatting'
 
@@ -116,5 +117,5 @@ require('lazy').setup({
     require 'custom.lsp', require 'custom.lualine', require 'custom.nvim-cmp',
     require 'custom.telescope', require 'custom.tmux-navigation',
     require 'custom.treesitter', require 'custom.dap',
-    require 'custom.fugitive', require 'custom.gleam'
+    require 'custom.fugitive', require 'custom.gleam', require 'custom.oil'
 }, {})
