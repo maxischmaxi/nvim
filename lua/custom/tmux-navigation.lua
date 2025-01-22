@@ -9,10 +9,16 @@ return {
 
         nvim_tmux_nav.setup {disable_when_zoomed = true}
 
-        bind('<C-h>', nvim_tmux_nav.NvimTmuxNavigateLeft)
-        bind('<C-j>', nvim_tmux_nav.NvimTmuxNavigateDown)
-        bind('<C-k>', nvim_tmux_nav.NvimTmuxNavigateUp)
-        bind('<C-l>', nvim_tmux_nav.NvimTmuxNavigateRight)
+        vim.api.nvim_create_autocmd('BufEnter', {
+            pattern = '*',
+            desc = 'Better mappings for tmux navigation',
+            callback = function()
+                bind('<C-h>', nvim_tmux_nav.NvimTmuxNavigateLeft)
+                bind('<C-j>', nvim_tmux_nav.NvimTmuxNavigateDown)
+                bind('<C-k>', nvim_tmux_nav.NvimTmuxNavigateUp)
+                bind('<C-l>', nvim_tmux_nav.NvimTmuxNavigateRight)
+            end
+        })
 
         -- vim.api.nvim_create_autocmd('filetype', {
         --     pattern = 'netrw',
