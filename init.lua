@@ -109,6 +109,7 @@ set('n', '<leader>q', vim.diagnostic.setloclist,
 set('n', '<c-b>', ':Oil<CR>', {silent = true})
 
 require 'custom.formatting'
+require 'custom.hex_to_rgb'
 
 require('lazy').setup({
     'tpope/vim-sleuth', require 'custom.autopairs', require 'custom.autotag',
@@ -117,5 +118,6 @@ require('lazy').setup({
     require 'custom.lsp', require 'custom.lualine', require 'custom.nvim-cmp',
     require 'custom.telescope', require 'custom.tmux-navigation',
     require 'custom.treesitter', require 'custom.dap',
-    require 'custom.fugitive', require 'custom.gleam', require 'custom.oil'
+    require 'custom.fugitive', require 'custom.gleam', require 'custom.oil',
+    require 'custom.mdx'
 }, {})
