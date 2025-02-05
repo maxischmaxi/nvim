@@ -110,14 +110,14 @@ set('n', '<c-b>', ':Oil<CR>', {silent = true})
 
 require 'custom.formatting'
 require 'custom.hex_to_rgb'
+require 'custom.tmux-navigation'
 
 require('lazy').setup({
     'tpope/vim-sleuth', require 'custom.autopairs', require 'custom.autotag',
     require 'custom.colorscheme', require 'custom.comment',
     require 'custom.copilot', require 'custom.flash', require 'custom.gitsigns',
     require 'custom.lsp', require 'custom.lualine', require 'custom.nvim-cmp',
-    require 'custom.telescope', require 'custom.tmux-navigation',
-    require 'custom.treesitter', require 'custom.dap',
-    require 'custom.fugitive', require 'custom.gleam', require 'custom.oil',
-    require 'custom.mdx'
+    require 'custom.telescope', require 'custom.treesitter',
+    require 'custom.dap', require 'custom.fugitive', require 'custom.gleam',
+    require 'custom.oil', require 'custom.mdx', require 'custom.color'
 }, {})
