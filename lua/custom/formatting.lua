@@ -113,6 +113,15 @@ vim.api.nvim_create_autocmd(autocmd, {
 })
 
 vim.api.nvim_create_autocmd(autocmd, {
+    group = vim.api.nvim_create_augroup("FormatGoOnSave", {clear = true}),
+    pattern = "*.go",
+    callback = function()
+        vim.cmd("silent! !gofmt -w %")
+        vim.cmd("edit!")
+    end
+})
+
+vim.api.nvim_create_autocmd(autocmd, {
     group = vim.api.nvim_create_augroup("FormatPrettierOnSave", {clear = true}),
     pattern = "*.{js,jsx,ts,tsx,css,scss,less,sass,html,json,yaml,yml,md,markdown,mdx}",
     callback = function()

@@ -1,4 +1,6 @@
 local servers = {
+    ltex = {ltex = {language = "de-DE"}},
+
     tailwindcss = {
         filetypes = {'html', 'typescriptreact', 'javascriptreact', 'css'}
     },
@@ -48,6 +50,8 @@ local servers = {
     },
 
     rust_analyzer = {diagnostics = {refreshSupport = false}},
+
+    gopls = {},
 
     stylelint_lsp = {filetypes = {'css', 'scss', 'less', 'sass', 'html'}},
 

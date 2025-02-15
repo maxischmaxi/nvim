@@ -23,7 +23,10 @@ local opt_options = {
     cursorline = true,
     termguicolors = true,
     -- guicursor = '',
-    clipboard = 'unnamedplus'
+    clipboard = 'unnamedplus',
+    tabstop = 4,
+    shiftwidth = 4,
+    softtabstop = 4
 }
 
 for k, v in pairs(opt_options) do vim.opt[k] = v end
@@ -111,6 +114,7 @@ set('n', '<c-b>', ':Oil<CR>', {silent = true})
 require 'custom.formatting'
 require 'custom.hex_to_rgb'
 require 'custom.tmux-navigation'
+require 'custom.studienarbeit'
 
 require('lazy').setup({
     'tpope/vim-sleuth', require 'custom.autopairs', require 'custom.autotag',

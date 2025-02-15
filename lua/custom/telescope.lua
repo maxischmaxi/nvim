@@ -13,8 +13,10 @@ return {
                     '--line-number', '--color=always', '--smart-case'
                 },
                 file_ignore_patterns = {
-                    "./node%_modules/*", "node%_modules", "^node%_modules/*",
-                    "node%_modules/*", "**/%_%_image%-snapshots%_%_/**/*",
+                    "kickstart.txt", "stockfish.js", "stockfish.wasm",
+                    "stockfish.wasm.map", "./node%_modules/*", "node%_modules",
+                    "^node%_modules/*", "node%_modules/*",
+                    "**/%_%_image%-snapshots%_%_/**/*",
                     "^%_%_image%-snapshots%_%_", "^%_%_image%-snapshots%_%_/*",
                     "^./.git/", "./.git/", "%.o", "%.a", "%.out", "%.obj",
                     "%.gch", "%.pch"
