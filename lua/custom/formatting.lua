@@ -12,6 +12,9 @@ end
 
 local function isempty(s) return s == nil or s == '' end
 
+local prettier_config_file = ""
+local stylelint_config_file = ""
+
 local function findPrettierConfig()
     local prettier_files = {
         ".prettierrc", ".prettierrc.json", ".prettierrc.yaml",
@@ -23,17 +26,11 @@ local function findPrettierConfig()
 
     for _, file in ipairs(prettier_files) do
         local path = dir .. '/' .. file
-        if file_exists(path) then return path end
+        if file_exists(path) then
+            prettier_config_file = path
+            return
+        end
     end
-
-    local project_dir = dir .. '/project'
-
-    for _, file in ipairs(prettier_files) do
-        local path = project_dir .. '/' .. file
-        if file_exists(path) then return path end
-    end
-
-    return nil
 end
 
 local function findStylelintConfig()
@@ -46,17 +43,30 @@ local function findStylelintConfig()
     local dir = vim.fn.getcwd()
     for _, file in ipairs(stylelint_files) do
         local path = dir .. '/' .. file
-        if file_exists(path) then return path end
+        if file_exists(path) then
+            stylelint_config_file = path
+            return
+        end
     end
-
-    local project_dir = dir .. '/project'
-    for _, file in ipairs(stylelint_files) do
-        local path = project_dir .. '/' .. file
-        if file_exists(path) then return path end
-    end
-
-    return nil
 end
+
+vim.api.nvim_create_autocmd("VimEnter", {
+    pattern = "*",
+    callback = function()
+        vim.notify("formatting.lua loaded", vim.log.levels.INFO)
+        findPrettierConfig()
+        findStylelintConfig()
+    end
+})
+
+vim.api.nvim_create_autocmd("DirChanged", {
+    pattern = "*",
+    callback = function()
+        vim.notify("DirChanged", vim.log.levels.INFO)
+        findPrettierConfig()
+        findStylelintConfig()
+    end
+})
 
 local function findCompileCommands()
     local dir = vim.fn.getcwd()
@@ -67,17 +77,19 @@ local function findCompileCommands()
     return nil
 end
 
+local function center() vim.cmd("normal! zz") end
+
 vim.api.nvim_create_autocmd(autocmd, {
     group = vim.api.nvim_create_augroup("FormatCssOnSave", {clear = true}),
     pattern = "*.{css,scss,less,sass}",
     callback = function()
-        local stylelint_file = findStylelintConfig()
-
-        if stylelint_file then
-            vim.cmd("silent! !stylelint --config " .. stylelint_file ..
+        if stylelint_config_file then
+            vim.cmd("silent! !stylelint --config " .. stylelint_config_file ..
                         " --fix %")
             vim.cmd("edit!")
         end
+
+        center()
     end
 })
 
@@ -91,6 +103,8 @@ vim.api.nvim_create_autocmd(autocmd, {
                 "silent! !clang-format -assume-filename=compile_commands.json -style=file -i %")
             vim.cmd("edit!")
         end
+
+        center()
     end
 })
 
@@ -100,6 +114,8 @@ vim.api.nvim_create_autocmd(autocmd, {
     callback = function()
         vim.cmd("silent! !lua-format -i % --tab-width 4 --column-limit 80")
         vim.cmd("edit!")
+
+        center()
     end
 })
 
@@ -109,6 +125,8 @@ vim.api.nvim_create_autocmd(autocmd, {
     callback = function()
         vim.cmd("silent! !cargo fmt")
         vim.cmd("edit!")
+
+        center()
     end
 })
 
@@ -118,6 +136,8 @@ vim.api.nvim_create_autocmd(autocmd, {
     callback = function()
         vim.cmd("silent! !gofmt -w %")
         vim.cmd("edit!")
+
+        center()
     end
 })
 
@@ -125,17 +145,13 @@ vim.api.nvim_create_autocmd(autocmd, {
     group = vim.api.nvim_create_augroup("FormatPrettierOnSave", {clear = true}),
     pattern = "*.{js,jsx,ts,tsx,css,scss,less,sass,html,json,yaml,yml,md,markdown,mdx}",
     callback = function()
-        local prettier_config = findPrettierConfig()
-        if isempty(prettier_config) then
-            -- vim.notify("No prettier config found", vim.log.levels.INFO)
+        if isempty(prettier_config_file) then
             vim.cmd("silent! !prettier % --print-width 80 --tab-width 4 --write")
-            vim.cmd("edit!")
         else
-            -- vim.notify("prettier config: " .. prettier_config .. " haha",
-            --            vim.log.levels.INFO)
-            vim.cmd("silent! !prettier % --config " .. prettier_config ..
+            vim.cmd("silent! !prettier % --config " .. prettier_config_file ..
                         " --write")
-            vim.cmd("edit!")
         end
+
+        center()
     end
 })
