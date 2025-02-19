@@ -1,2 +1,4 @@
-vim.api.nvim_set_keymap('n', 'π', ':!latexmk -pdf studienarbeit.tex -f<CR>',
-                        {noremap = true, silent = true})
+vim.api.nvim_create_user_command("Latexmk", function()
+    vim.api.nvim_command('silent !latexmk -pdf studienarbeit.tex -f')
+end, {})
+

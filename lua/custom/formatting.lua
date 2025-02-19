@@ -53,7 +53,6 @@ end
 vim.api.nvim_create_autocmd("VimEnter", {
     pattern = "*",
     callback = function()
-        vim.notify("formatting.lua loaded", vim.log.levels.INFO)
         findPrettierConfig()
         findStylelintConfig()
     end

@@ -1,13 +1,24 @@
+-- return {
+--     "folke/tokyonight.nvim",
+--     lazy = false,
+--     priority = 1000,
+--     opts = {},
+--     config = function()
+--         vim.cmd [[
+--       colorscheme tokyonight
+--       highlight Visual guibg=#33467C
+--     ]]
+--     end
+-- }
 return {
-    "folke/tokyonight.nvim",
-    lazy = false,
+    "catppuccin/nvim",
+    name = "catppuccin",
     priority = 1000,
-    opts = {},
     config = function()
-        vim.cmd [[
-      colorscheme tokyonight
-      highlight Visual guibg=#33467C
-    ]]
+        require("catppuccin").setup({
+            background = {light = "mocha", dark = "mocha"}
+        })
+        vim.cmd [[colorscheme catppuccin]]
     end
 }
 

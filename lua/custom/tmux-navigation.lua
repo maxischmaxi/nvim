@@ -114,13 +114,10 @@ end
 
 local navigate = nil
 if vim.env.TMUX ~= nil then
-    print("tmux detected")
     navigate = tmux_navigate
 elseif vim.fn.executable('yabai') == 1 then
-    print("yabai detected")
     navigate = yabai_navigate
 else
-    print("no tmux or yabai detected, using vim navigation")
     navigate = vim_navigate
 end
 
