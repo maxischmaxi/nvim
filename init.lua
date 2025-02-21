@@ -22,7 +22,6 @@ local opt_options = {
     foldlevel = 99,
     cursorline = true,
     termguicolors = true,
-    -- guicursor = '',
     clipboard = 'unnamedplus',
     tabstop = 4,
     shiftwidth = 4,
@@ -57,7 +56,7 @@ for k, v in pairs(wo_options) do vim.wo[k] = v end
 
 vim.diagnostic.config({
     underline = true,
-    virtual_text = false,
+    virtual_text = {source = 'if_many', spacing = 2},
     signs = true,
     update_in_insert = false,
     severity_sort = true
@@ -115,14 +114,13 @@ require 'custom.formatting'
 require 'custom.hex_to_rgb'
 require 'custom.tmux-navigation'
 require 'custom.studienarbeit'
-require 'custom.theme'
 
 require('lazy').setup({
     'tpope/vim-sleuth', require 'custom.autopairs', require 'custom.autotag',
     require 'custom.comment', require 'custom.copilot', require 'custom.flash',
-    require 'custom.gitsigns', require 'custom.lsp', require 'custom.lualine',
-    require 'custom.nvim-cmp', require 'custom.telescope',
-    require 'custom.treesitter', require 'custom.dap',
-    require 'custom.fugitive', require 'custom.gleam', require 'custom.oil',
-    require 'custom.mdx', require 'custom.color'
+    require 'custom.gitsigns', require 'custom.lsp', require 'custom.nvim-cmp',
+    require 'custom.telescope', require 'custom.treesitter',
+    require 'custom.dap', require 'custom.fugitive', require 'custom.gleam',
+    require 'custom.oil', require 'custom.mdx',
+    require 'custom.highlight-colors', require 'custom.theme'
 }, {})
