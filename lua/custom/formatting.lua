@@ -10,6 +10,15 @@ local function file_exists(filepath)
     end
 end
 
+local function folder_exists(folderpath)
+    local f = io.open(folderpath, "r")
+    if f ~= nil then
+        io.close(f)
+        return true
+    end
+    return false
+end
+
 local function isempty(s) return s == nil or s == '' end
 
 local prettier_config_file = ""
@@ -31,6 +40,16 @@ local function findPrettierConfig()
             return
         end
     end
+
+    if folder_exists(dir .. "/project") then
+        for _, file in ipairs(prettier_files) do
+            local path = dir .. "/project/" .. file
+            if file_exists(path) then
+                prettier_config_file = path
+                return
+            end
+        end
+    end
 end
 
 local function findStylelintConfig()
@@ -41,11 +60,22 @@ local function findStylelintConfig()
     }
 
     local dir = vim.fn.getcwd()
+
     for _, file in ipairs(stylelint_files) do
         local path = dir .. '/' .. file
         if file_exists(path) then
             stylelint_config_file = path
             return
+        end
+    end
+
+    if folder_exists(dir .. "/project") then
+        for _, file in ipairs(stylelint_files) do
+            local path = dir .. "/project/" .. file
+            if file_exists(path) then
+                stylelint_config_file = path
+                return
+            end
         end
     end
 end

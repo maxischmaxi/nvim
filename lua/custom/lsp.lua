@@ -1,5 +1,5 @@
 local servers = {
-    ltex = {ltex = {language = "de-DE"}},
+    ltex = {ltex = {enabled = {"tex"}, language = "de-DE"}},
 
     tailwindcss = {
         filetypes = {'html', 'typescriptreact', 'javascriptreact', 'css'}

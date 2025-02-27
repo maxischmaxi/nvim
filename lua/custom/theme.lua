@@ -1,11 +1,26 @@
 return {
     "catppuccin/nvim",
     name = "catppuccin",
-    dependencies = {"echasnovski/mini.statusline"},
     priority = 1000,
     config = function()
-        require("catppuccin").setup({
+        local catppuccin = require("catppuccin")
+        catppuccin.setup({
             flavour = "mocha",
+            styles = {
+                comments = {"italic"},
+                functions = {"italic"},
+                keywords = {"bold"}
+            },
+            custom_highlights = function(colors)
+                local u = require("catppuccin.utils.colors")
+                return {
+                    Cursorline = {
+                        bg = u.vary_color({
+                            mocha = u.lighten(colors.crust, 0.70, colors.base)
+                        }, u.darken(colors.crust, 0.64, colors.base))
+                    }
+                }
+            end,
             integrations = {
                 cmp = true,
                 gitsigns = true,
@@ -15,7 +30,7 @@ return {
                 mini = {enabled = true, indentscope_color = ""}
             }
         })
-        require("mini.statusline").setup()
+
         vim.cmd.colorscheme "catppuccin"
     end
 }

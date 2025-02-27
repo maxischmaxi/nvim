@@ -44,8 +44,7 @@ local o_options = {
     smartcase = true,
     updatetime = 250,
     timeoutlen = 300,
-    completeopt = 'menuone,noselect',
-    termguicolors = true
+    completeopt = 'menuone,noselect'
 }
 
 for k, v in pairs(o_options) do vim.o[k] = v end
@@ -122,5 +121,6 @@ require('lazy').setup({
     require 'custom.telescope', require 'custom.treesitter',
     require 'custom.dap', require 'custom.fugitive', require 'custom.gleam',
     require 'custom.oil', require 'custom.mdx',
-    require 'custom.highlight-colors', require 'custom.theme'
+    require 'custom.highlight-colors', require 'custom.lualine'
+    -- require 'custom.theme'
 }, {})

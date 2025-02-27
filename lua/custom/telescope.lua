@@ -18,8 +18,8 @@ return {
                     "^node%_modules/*", "node%_modules/*",
                     "**/%_%_image%-snapshots%_%_/**/*",
                     "^%_%_image%-snapshots%_%_", "^%_%_image%-snapshots%_%_/*",
-                    "^./.git/", "./.git/", "%.o", "%.a", "%.out", "%.obj",
-                    "%.gch", "%.pch"
+                    "^./.git/", "./.git/", "%.o$", "%.a$", "%.out$", "%.obj$",
+                    "%.gch$", "%.pch$"
                 }
             },
             pickers = {
