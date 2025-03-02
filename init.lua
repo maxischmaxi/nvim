@@ -14,27 +14,8 @@ local global_options = {
 
 for k, v in pairs(global_options) do vim.g[k] = v end
 
-local opt_options = {
-    scrolloff = 20,
-    fillchars = {fold = ' '},
-    foldmethod = 'indent',
-    foldenable = false,
-    foldlevel = 99,
-    cursorline = true,
-    termguicolors = true,
-    clipboard = 'unnamedplus',
-    tabstop = 4,
-    shiftwidth = 4,
-    softtabstop = 4
-}
-
-for k, v in pairs(opt_options) do vim.opt[k] = v end
-
 local o_options = {
     wrap = false,
-    tabstop = 4,
-    shiftwidth = 4,
-    softtabstop = 4,
     expandtab = true,
     hlsearch = true,
     mouse = 'a',
@@ -44,10 +25,23 @@ local o_options = {
     smartcase = true,
     updatetime = 250,
     timeoutlen = 300,
-    completeopt = 'menuone,noselect'
+    completeopt = 'menuone,noselect',
+    scrolloff = 12,
+    fillchars = {fold = ' '},
+    foldmethod = 'indent',
+    foldenable = false,
+    foldlevel = 99,
+    cursorline = false,
+    termguicolors = true,
+    clipboard = 'unnamedplus',
+    tabstop = 4,
+    shiftwidth = 4,
+    softtabstop = 4,
+    autoindent = true,
+    smartindent = true
 }
 
-for k, v in pairs(o_options) do vim.o[k] = v end
+for k, v in pairs(o_options) do vim.opt[k] = v end
 
 local wo_options = {number = true, signcolumn = 'yes', relativenumber = false}
 
@@ -121,6 +115,7 @@ require('lazy').setup({
     require 'custom.telescope', require 'custom.treesitter',
     require 'custom.dap', require 'custom.fugitive', require 'custom.gleam',
     require 'custom.oil', require 'custom.mdx',
-    require 'custom.highlight-colors', require 'custom.lualine'
+    require 'custom.highlight-colors', require 'custom.lualine',
+    require 'custom.tokyonight'
     -- require 'custom.theme'
 }, {})
