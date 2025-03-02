@@ -116,6 +116,6 @@ require('lazy').setup({
     require 'custom.dap', require 'custom.fugitive', require 'custom.gleam',
     require 'custom.oil', require 'custom.mdx',
     require 'custom.highlight-colors', require 'custom.lualine',
-    require 'custom.tokyonight'
+    require 'custom.tokyonight', require 'custom.conflict-marker'
     -- require 'custom.theme'
 }, {})
