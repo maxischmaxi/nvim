@@ -15,7 +15,7 @@ local global_options = {
 for k, v in pairs(global_options) do vim.g[k] = v end
 
 local o_options = {
-    wrap = false,
+    wrap = true,
     expandtab = true,
     hlsearch = true,
     mouse = 'a',
@@ -116,6 +116,7 @@ require('lazy').setup({
     require 'custom.dap', require 'custom.fugitive', require 'custom.gleam',
     require 'custom.oil', require 'custom.mdx',
     require 'custom.highlight-colors', require 'custom.lualine',
-    require 'custom.tokyonight', require 'custom.conflict-marker'
+    require 'custom.tokyonight', require 'custom.conflict-marker',
+    require 'custom.spectre'
     -- require 'custom.theme'
 }, {})

@@ -91,7 +91,6 @@ vim.api.nvim_create_autocmd("VimEnter", {
 vim.api.nvim_create_autocmd("DirChanged", {
     pattern = "*",
     callback = function()
-        vim.notify("DirChanged", vim.log.levels.INFO)
         findPrettierConfig()
         findStylelintConfig()
     end
@@ -106,8 +105,6 @@ local function findCompileCommands()
     return nil
 end
 
-local function center() vim.cmd("normal! zz") end
-
 vim.api.nvim_create_autocmd(autocmd, {
     group = vim.api.nvim_create_augroup("FormatCssOnSave", {clear = true}),
     pattern = "*.{css,scss,less,sass}",
@@ -117,8 +114,6 @@ vim.api.nvim_create_autocmd(autocmd, {
                         " --fix %")
             vim.cmd("edit!")
         end
-
-        center()
     end
 })
 
@@ -132,8 +127,6 @@ vim.api.nvim_create_autocmd(autocmd, {
                 "silent! !clang-format -assume-filename=compile_commands.json -style=file -i %")
             vim.cmd("edit!")
         end
-
-        center()
     end
 })
 
@@ -143,8 +136,6 @@ vim.api.nvim_create_autocmd(autocmd, {
     callback = function()
         vim.cmd("silent! !lua-format -i % --tab-width 4 --column-limit 80")
         vim.cmd("edit!")
-
-        center()
     end
 })
 
@@ -154,8 +145,6 @@ vim.api.nvim_create_autocmd(autocmd, {
     callback = function()
         vim.cmd("silent! !cargo fmt")
         vim.cmd("edit!")
-
-        center()
     end
 })
 
@@ -165,8 +154,6 @@ vim.api.nvim_create_autocmd(autocmd, {
     callback = function()
         vim.cmd("silent! !gofmt -w %")
         vim.cmd("edit!")
-
-        center()
     end
 })
 
@@ -180,7 +167,5 @@ vim.api.nvim_create_autocmd(autocmd, {
             vim.cmd("silent! !prettier % --config " .. prettier_config_file ..
                         " --write")
         end
-
-        center()
     end
 })

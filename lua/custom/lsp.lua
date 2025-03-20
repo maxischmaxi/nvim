@@ -1,70 +1,3 @@
-local servers = {
-    ltex = {ltex = {enabled = {"tex"}, language = "de-DE"}},
-
-    tailwindcss = {
-        filetypes = {'html', 'typescriptreact', 'javascriptreact', 'css'}
-    },
-
-    html = {filetypes = {'html', 'twig', 'hbs'}},
-
-    jsonls = {filetypes = {'json', 'jsonc'}},
-
-    ts_ls = {
-        filetypes = {
-            'javascript', 'javascriptreact', 'typescript', 'typescriptreact'
-        },
-        init_options = {
-            preferences = {
-                disableSuggestions = true,
-                includeCompletionsForModuleExports = false
-            }
-        }
-    },
-
-    pyright = {filetypes = {'python'}},
-
-    lua_ls = {
-        Lua = {
-            workspace = {checkThirdParty = false},
-            telemetry = {enable = false}
-        }
-    },
-
-    eslint = {
-        codeAction = {
-            disableRuleComment = {enable = true, location = "separateLine"},
-            showDocumentation = {enable = true}
-        },
-        codeActionOnSave = {enable = true, mode = "all"},
-        experimental = {useFlatConfig = false},
-        format = true,
-        nodePath = "",
-        onIgnoredFiles = "off",
-        problems = {shortenToSingleLine = false},
-        quiet = false,
-        rulesCustomizations = {},
-        run = "onType",
-        useESLintClass = false,
-        validate = "on",
-        workingDirectory = {mode = "location"}
-    },
-
-    rust_analyzer = {diagnostics = {refreshSupport = false}},
-
-    gopls = {},
-
-    stylelint_lsp = {filetypes = {'css', 'scss', 'less', 'sass', 'html'}},
-
-    cssmodules_ls = {filetypes = {'css', 'scss', 'less', 'sass', 'html'}},
-
-    cssls = {filetypes = {'css', 'scss', 'less', 'sass', 'html'}},
-
-    clangd = {
-        offsetEncoding = {"utf-8", "utf-16"},
-        textDocument = {completion = {editsNearCursor = true}}
-    }
-}
-
 return {
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -72,9 +5,88 @@ return {
         'folke/lazydev.nvim'
     },
     config = function()
+        local servers = {
+            ltex = {ltex = {enabled = {"tex"}, language = "de-DE"}},
+
+            tailwindcss = {
+                filetypes = {
+                    'html', 'typescriptreact', 'javascriptreact', 'css'
+                }
+            },
+
+            html = {filetypes = {'html', 'twig', 'hbs'}},
+
+            jsonls = {filetypes = {'json', 'jsonc'}},
+
+            ts_ls = {
+                filetypes = {
+                    'javascript', 'javascriptreact', 'typescript',
+                    'typescriptreact'
+                },
+                init_options = {
+                    preferences = {
+                        disableSuggestions = true,
+                        includeCompletionsForModuleExports = false
+                    }
+                }
+            },
+
+            pyright = {filetypes = {'python'}},
+
+            lua_ls = {
+                Lua = {
+                    workspace = {checkThirdParty = false},
+                    telemetry = {enable = false}
+                }
+            },
+
+            eslint = {
+                codeAction = {
+                    disableRuleComment = {
+                        enable = true,
+                        location = "separateLine"
+                    },
+                    showDocumentation = {enable = true}
+                },
+                codeActionOnSave = {enable = true, mode = "all"},
+                experimental = {useFlatConfig = true},
+                format = true,
+                nodePath = "",
+                onIgnoredFiles = "off",
+                problems = {shortenToSingleLine = false},
+                quiet = false,
+                rulesCustomizations = {},
+                run = "onType",
+                useESLintClass = false,
+                validate = "on",
+                workingDirectory = {mode = "location"}
+            },
+
+            rust_analyzer = {diagnostics = {refreshSupport = false}},
+
+            gopls = {},
+
+            stylelint_lsp = {
+                filetypes = {'css', 'scss', 'less', 'sass', 'html'}
+            },
+
+            cssmodules_ls = {
+                filetypes = {'css', 'scss', 'less', 'sass', 'html'}
+            },
+
+            cssls = {filetypes = {'css', 'scss', 'less', 'sass', 'html'}},
+
+            clangd = {
+                offsetEncoding = {"utf-8", "utf-16"},
+                textDocument = {completion = {editsNearCursor = true}}
+            }
+        }
+
         require('lazydev').setup({
             library = {"nvim-dap-ui"},
             enabled = true,
+            integrations = {cmp = true, coq = false},
+            runtime = vim.env.VIMRUNTIME,
             debug = false
         })
 
