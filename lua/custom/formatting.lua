@@ -80,15 +80,7 @@ local function findStylelintConfig()
     end
 end
 
-vim.api.nvim_create_autocmd("VimEnter", {
-    pattern = "*",
-    callback = function()
-        findPrettierConfig()
-        findStylelintConfig()
-    end
-})
-
-vim.api.nvim_create_autocmd("DirChanged", {
+vim.api.nvim_create_autocmd({"VimEnter", "DirChanged"}, {
     pattern = "*",
     callback = function()
         findPrettierConfig()
@@ -158,14 +150,17 @@ vim.api.nvim_create_autocmd(autocmd, {
 })
 
 vim.api.nvim_create_autocmd(autocmd, {
-    group = vim.api.nvim_create_augroup("FormatPrettierOnSave", {clear = true}),
     pattern = "*.{js,jsx,ts,tsx,css,scss,less,sass,html,json,yaml,yml,md,markdown,mdx}",
     callback = function()
         if isempty(prettier_config_file) then
-            vim.cmd("silent! !prettier % --print-width 80 --tab-width 4 --write")
+            vim.cmd(
+                "silent! !prettier --print-width 80 --tab-width 4 --write \"" ..
+                    vim.fn.expand("%") .. "\"")
         else
-            vim.cmd("silent! !prettier % --config " .. prettier_config_file ..
-                        " --write")
+            vim.cmd("silent! !" .. "prettier --config \"" ..
+                        prettier_config_file .. "\" --write \"" ..
+                        vim.fn.expand("%") .. "\"")
         end
+        vim.cmd("edit")
     end
 })
