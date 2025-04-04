@@ -149,6 +149,17 @@ vim.api.nvim_create_autocmd(autocmd, {
     end
 })
 
+vim.api.nvim_create_user_command("Prettier", function()
+    if isempty(prettier_config_file) then
+        vim.cmd("silent! !prettier --print-width 80 --tab-width 4 --write \"" ..
+                    vim.fn.expand("%") .. "\"")
+    else
+        vim.cmd("silent! !" .. "prettier --config \"" .. prettier_config_file ..
+                    "\" --write \"" .. vim.fn.expand("%") .. "\"")
+    end
+    vim.cmd("edit")
+end, {})
+
 vim.api.nvim_create_autocmd(autocmd, {
     pattern = "*.{js,jsx,ts,tsx,css,scss,less,sass,html,json,yaml,yml,md,markdown,mdx}",
     callback = function()
