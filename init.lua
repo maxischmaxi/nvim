@@ -15,7 +15,7 @@ local global_options = {
 for k, v in pairs(global_options) do vim.g[k] = v end
 
 local o_options = {
-    wrap = true,
+    wrap = false,
     expandtab = true,
     hlsearch = true,
     mouse = 'a',
@@ -85,6 +85,12 @@ set('n', '<c-l>', '<c-w><c-l>', {silent = true})
 set('n', '<c-h>', '<c-w><c-h>', {silent = true})
 set('n', '<c-j>', '<c-w><c-j>', {silent = true})
 set('n', '<c-k>', '<c-w><c-k>', {silent = true})
+
+set('n', '<leader>rn', vim.lsp.buf.rename, {desc = '[R]e[n]ame'})
+set('n', '<leader>ca', vim.lsp.buf.code_action, {desc = '[C]ode [A]ction'})
+set('n', 'gD', vim.lsp.buf.declaration, {desc = '[G]oto [D]eclaration'})
+set('n', 'K', vim.lsp.buf.hover, {desc = 'Hover Documentation'})
+set('n', '<C-k>', vim.lsp.buf.signature_help, {desc = 'Signature Documentation'})
 
 set({'n', 'v'}, '<Space>', '<Nop>', {silent = true})
 
