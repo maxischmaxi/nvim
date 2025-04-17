@@ -55,12 +55,21 @@ vim.diagnostic.config({
     severity_sort = true
 })
 
-local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system {
-        'git', 'clone', '--filter=blob:none',
-        'https://github.com/folke/lazy.nvim.git', '--branch=stable', lazypath
-    }
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+    local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+    local out = vim.fn.system({
+        "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo,
+        lazypath
+    })
+    if vim.v.shell_error ~= 0 then
+        vim.api.nvim_echo({
+            {"Failed to clone lazy.nvim:\n", "ErrorMsg"}, {out, "WarningMsg"},
+            {"\nPress any key to exit..."}
+        }, true, {})
+        vim.fn.getchar()
+        os.exit(1)
+    end
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -97,10 +106,6 @@ set({'n', 'v'}, '<Space>', '<Nop>', {silent = true})
 set('n', 'k', "v:count == 0 ? 'gk' : 'k'", {expr = true, silent = true})
 set('n', 'j', "v:count == 0 ? 'gj' : 'j'", {expr = true, silent = true})
 
-set('n', '[d', vim.diagnostic.goto_prev,
-    {desc = 'Go to previous diagnostic message'})
-set('n', ']d', vim.diagnostic.goto_next,
-    {desc = 'Go to next diagnostic message'})
 set('n', '<leader>e', vim.diagnostic.open_float,
     {desc = 'Open floating diagnostic message'})
 set('n', '<leader>q', vim.diagnostic.setloclist,
@@ -109,15 +114,23 @@ set('n', '<leader>q', vim.diagnostic.setloclist,
 -- set('n', '<c-b>', ':Explore<CR>', {silent = true})
 set('n', '<c-b>', ':Oil<CR>', {silent = true})
 
+vim.api.nvim_create_autocmd('TextYankPost', {
+    callback = function() vim.highlight.on_yank() end,
+    group = vim.api.nvim_create_augroup('YankHighlight', {clear = true}),
+    pattern = '*'
+})
+
 require 'custom.formatting'
 require 'custom.hex_to_rgb'
 require 'custom.tmux-navigation'
 require 'custom.studienarbeit'
+-- require 'custom.lsp'
 
 require('lazy').setup({
-    'tpope/vim-sleuth', require 'custom.autopairs', require 'custom.autotag',
+    require 'custom.mason', require 'custom.snacks', 'tpope/vim-sleuth',
+    require 'custom.autopairs', require 'custom.autotag',
     require 'custom.comment', require 'custom.copilot', require 'custom.flash',
-    require 'custom.gitsigns', require 'custom.lsp', require 'custom.nvim-cmp',
+    require 'custom.gitsigns', require 'custom.nvim-cmp',
     require 'custom.telescope', require 'custom.treesitter',
     require 'custom.dap', require 'custom.fugitive', require 'custom.gleam',
     require 'custom.oil', require 'custom.mdx',
