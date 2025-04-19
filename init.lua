@@ -127,15 +127,15 @@ require 'custom.studienarbeit'
 -- require 'custom.lsp'
 
 require('lazy').setup({
-    require 'custom.mason', require 'custom.snacks', 'tpope/vim-sleuth',
-    require 'custom.autopairs', require 'custom.autotag',
-    require 'custom.comment', require 'custom.copilot', require 'custom.flash',
-    require 'custom.gitsigns', require 'custom.nvim-cmp',
-    require 'custom.telescope', require 'custom.treesitter',
-    require 'custom.dap', require 'custom.fugitive', require 'custom.gleam',
-    require 'custom.oil', require 'custom.mdx',
-    require 'custom.highlight-colors', require 'custom.lualine',
-    require 'custom.tokyonight', require 'custom.conflict-marker',
-    require 'custom.spectre'
+    require 'custom.mason', 'tpope/vim-sleuth', require 'custom.autopairs',
+    require 'custom.autotag', require 'custom.comment',
+    require 'custom.copilot', require 'custom.flash', require 'custom.gitsigns',
+    require 'custom.nvim-cmp', require 'custom.telescope',
+    require 'custom.treesitter', require 'custom.dap',
+    require 'custom.fugitive', require 'custom.gleam', require 'custom.oil',
+    require 'custom.mdx', require 'custom.highlight-colors',
+    require 'custom.lualine', require 'custom.tokyonight',
+    require 'custom.conflict-marker', require 'custom.spectre',
+    require 'custom.dressing'
     -- require 'custom.theme'
 }, {})

@@ -12,9 +12,9 @@ return {
         indent = {animate = {enabled = false}},
         input = {enabled = false},
         picker = {enabled = false},
-        notifier = {enabled = true},
-        quickfile = {enabled = true},
-        scope = {enabled = true},
+        notifier = {enabled = false},
+        quickfile = {enabled = false},
+        scope = {enabled = false},
         scroll = {enabled = false},
         statuscolumn = {enabled = false},
         words = {enabled = false}
