@@ -5,18 +5,21 @@ return {
     ---@type snacks.Config
     opts = {
         bigfile = {enabled = true},
-        dashboard = {enabled = true},
+        dashboard = {enabled = false},
         explorer = {enabled = false},
         ---@class snacks.indent.Config
         ---@field enabled? boolean
         indent = {animate = {enabled = false}},
         input = {enabled = false},
-        picker = {enabled = true},
+        picker = {enabled = false},
         notifier = {enabled = true},
         quickfile = {enabled = true},
         scope = {enabled = true},
         scroll = {enabled = false},
         statuscolumn = {enabled = false},
         words = {enabled = false}
+    },
+    keys = {
+        -- {"<leader>sf", function() Snacks.picker.files() end, desc = "Files"}
     }
 }
