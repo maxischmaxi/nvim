@@ -45,8 +45,8 @@ return {
                 },
                 file_ignore_patterns = {
                     "kickstart.txt", "stockfish.js", "stockfish.wasm",
-                    "stockfish.wasm.map", "./node%_modules/*", "node%_modules",
-                    "^node%_modules/*", "node%_modules/*",
+                    "%.tsbuildinfo$", "stockfish.wasm.map", "./node%_modules/*",
+                    "node%_modules", "^node%_modules/*", "node%_modules/*",
                     "**/%_%_image%-snapshots%_%_/**/*",
                     "^%_%_image%-snapshots%_%_", "^%_%_image%-snapshots%_%_/*",
                     "^./.git/", "./.git/", "%.o$", "%.a$", "%.out$", "%.obj$",
