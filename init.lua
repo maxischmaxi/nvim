@@ -98,7 +98,9 @@ set('n', '<c-k>', '<c-w><c-k>', {silent = true})
 set('n', '<leader>rn', vim.lsp.buf.rename, {desc = '[R]e[n]ame'})
 set('n', '<leader>ca', vim.lsp.buf.code_action, {desc = '[C]ode [A]ction'})
 set('n', 'gD', vim.lsp.buf.declaration, {desc = '[G]oto [D]eclaration'})
-set('n', 'K', vim.lsp.buf.hover, {desc = 'Hover Documentation'})
+set('n', 'K',
+    function() vim.lsp.buf.hover({border = "rounded", padding = {1, 1}}) end,
+    {desc = 'Hover Documentation'})
 set('n', '<C-k>', vim.lsp.buf.signature_help, {desc = 'Signature Documentation'})
 
 set({'n', 'v'}, '<Space>', '<Nop>', {silent = true})
