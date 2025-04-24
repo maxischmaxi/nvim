@@ -122,11 +122,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     pattern = '*'
 })
 
-require 'custom.formatting'
 require 'custom.hex_to_rgb'
 require 'custom.tmux-navigation'
 require 'custom.studienarbeit'
--- require 'custom.lsp'
 
 require('lazy').setup({
     require 'custom.mason', 'tpope/vim-sleuth', require 'custom.autopairs',
@@ -138,6 +136,5 @@ require('lazy').setup({
     require 'custom.mdx', require 'custom.highlight-colors',
     require 'custom.lualine', require 'custom.tokyonight',
     require 'custom.conflict-marker', require 'custom.spectre',
-    require 'custom.dressing'
-    -- require 'custom.theme'
+    require 'custom.dressing', require 'custom.formatter'
 }, {})

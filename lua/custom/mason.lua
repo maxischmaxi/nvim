@@ -50,7 +50,7 @@ return {
                 },
                 codeActionOnSave = {enable = true, mode = "all"},
                 experimental = {useFlatConfig = true},
-                format = true,
+                format = false,
                 nodePath = "",
                 onIgnoredFiles = "off",
                 problems = {shortenToSingleLine = false},
