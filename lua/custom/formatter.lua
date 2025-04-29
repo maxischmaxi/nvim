@@ -2,27 +2,32 @@ return {
 	"mhartington/formatter.nvim",
 	config = function()
 		require("formatter").setup({
+			logging = true,
+			log_level = vim.log.levels.INFO,
 			filetype = {
 				lua = {
 					require("formatter.filetypes.lua").stylua,
 				},
-				typescript = {
-					require("formatter.filetypes.typescript").prettierd,
-					require("formatter.filetypes.typescript").eslint_d,
+				xhtml = {
+					require("formatter.filetypes.xhtml").tidy,
+				},
+				html = {
+					require("formatter.filetypes.html").htmlbeautifier,
 				},
 				javascript = {
 					require("formatter.filetypes.javascript").prettierd,
-					require("formatter.filetypes.javascript").eslint_d,
 				},
-				["*"] = {
-					require("formatter.filetypes.any").remove_trailing_whitespace,
-					function()
-						return {
-							exe = "prettierd",
-							args = { vim.api.nvim_buf_get_name(0) },
-							stdin = true,
-						}
-					end,
+				typescript = {
+					require("formatter.filetypes.typescript").prettierd,
+				},
+				javascriptreact = {
+					require("formatter.filetypes.javascriptreact").prettierd,
+				},
+				typescriptreact = {
+					require("formatter.filetypes.typescriptreact").prettierd,
+				},
+				json = {
+					require("formatter.filetypes.json").jq,
 				},
 			},
 		})
