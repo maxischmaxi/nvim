@@ -28,6 +28,7 @@ return {
 				},
 				json = {
 					require("formatter.filetypes.json").jq,
+					require("formatter.filetypes.json").prettierd,
 				},
 			},
 		})
