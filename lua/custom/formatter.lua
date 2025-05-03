@@ -41,7 +41,11 @@ return {
 		augroup("__formatter__", { clear = true })
 		autocmd("BufWritePost", {
 			group = "__formatter__",
-			command = ":FormatWrite",
+			callback = function()
+				if not vim.fn.expand("%"):match("^oil://") and not vim.fn.expand("%"):match("^fugitive://") then
+					vim.cmd("FormatWrite")
+				end
+			end,
 		})
 	end,
 }

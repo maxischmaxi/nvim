@@ -49,6 +49,5 @@ require("lazy").setup({
 	require("custom.spectre"),
 	require("custom.dressing"),
 	require("custom.formatter"),
-	require("custom.file-history"),
 	require("custom.bloat"),
 }, {})
