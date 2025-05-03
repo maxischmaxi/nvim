@@ -13,11 +13,6 @@ set("v", "∆", ":m '<-2<CR>gv=gv", { silent = true })
 set("n", "<leader>+", ':exe "vertical resize " . (winwidth(0) * 3/2)<CR>', { silent = true })
 set("n", "<leader>-", ':exe "vertical resize " . (winwidth(0) * 2/3)<CR>', { silent = true })
 
-set("n", "<c-l>", "<c-w><c-l>", { silent = true })
-set("n", "<c-h>", "<c-w><c-h>", { silent = true })
-set("n", "<c-j>", "<c-w><c-j>", { silent = true })
-set("n", "<c-k>", "<c-w><c-k>", { silent = true })
-
 set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "[R]e[n]ame" })
 set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "[C]ode [A]ction" })
 set("n", "gD", vim.lsp.buf.declaration, { desc = "[G]oto [D]eclaration" })
@@ -33,3 +28,25 @@ set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
+
+local function tmux_yabai_or_split_switch(wincmd, direction)
+	local previous_winnr = vim.api.nvim_get_current_win()
+	vim.cmd("silent! wincmd " .. wincmd)
+	local current_winnr = vim.api.nvim_get_current_win()
+	if previous_winnr == current_winnr then
+		os.execute("tmux-yabai.sh " .. direction)
+	end
+end
+
+set("n", "<C-h>", function()
+	tmux_yabai_or_split_switch("h", "west")
+end, { silent = true })
+set("n", "<C-j>", function()
+	tmux_yabai_or_split_switch("j", "south")
+end, { silent = true })
+set("n", "<C-k>", function()
+	tmux_yabai_or_split_switch("k", "north")
+end, { silent = true })
+set("n", "<C-l>", function()
+	tmux_yabai_or_split_switch("l", "east")
+end, { silent = true })
