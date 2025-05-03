@@ -26,10 +26,11 @@ require("custom.base_keymap")
 require("custom.hex_to_rgb")
 require("custom.tmux-navigation")
 require("custom.studienarbeit")
-require("custom.netrw")
+-- require("custom.netrw")
 require("custom.yank")
 
 require("lazy").setup({
+	require("custom.oil"),
 	require("custom.mason"),
 	require("custom.sleuth"),
 	require("custom.autopairs"),
@@ -50,5 +51,5 @@ require("lazy").setup({
 	require("custom.dressing"),
 	require("custom.formatter"),
 	require("custom.file-history"),
-	require("custom.bloat")
+	require("custom.bloat"),
 }, {})
