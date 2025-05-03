@@ -26,7 +26,7 @@ require("custom.base_keymap")
 require("custom.hex_to_rgb")
 require("custom.tmux-navigation")
 require("custom.studienarbeit")
--- require("custom.netrw")
+require("custom.netrw")
 require("custom.yank")
 
 require("lazy").setup({
@@ -50,6 +50,5 @@ require("lazy").setup({
 	require("custom.dressing"),
 	require("custom.formatter"),
 	require("custom.file-history"),
-	require("custom.mini-files"),
 	require("custom.bloat")
 }, {})
