@@ -50,3 +50,13 @@ end, { silent = true })
 set("n", "<C-l>", function()
 	tmux_yabai_or_split_switch("l", "east")
 end, { silent = true })
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "oil",
+	callback = function()
+		vim.keymap.set("n", "<C-h>", "<C-w>h", { buffer = true, desc = "Go to left window" })
+		vim.keymap.set("n", "<C-j>", "<C-w>j", { buffer = true, desc = "Go to bottom window" })
+		vim.keymap.set("n", "<C-k>", "<C-w>k", { buffer = true, desc = "Go to top window" })
+		vim.keymap.set("n", "<C-l>", "<C-w>l", { buffer = true, desc = "Go to right window" })
+	end,
+})
