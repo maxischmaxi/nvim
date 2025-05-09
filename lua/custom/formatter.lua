@@ -77,5 +77,9 @@ return {
 				end
 			end,
 		})
+		autocmd("BufWritePre", {
+			pattern = "*",
+			command = [[:%s/\u00a0/ /ge]],
+		})
 	end,
 }
