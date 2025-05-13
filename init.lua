@@ -35,7 +35,7 @@ require("lazy").setup({
 	require("custom.autopairs"),
 	require("custom.autotag"),
 	require("custom.comment"),
-	require("custom.copilot"),
+	-- require("custom.copilot"),
 	require("custom.flash"),
 	require("custom.nvim-cmp"),
 	require("custom.telescope"),
@@ -50,4 +50,6 @@ require("lazy").setup({
 	require("custom.dressing"),
 	require("custom.formatter"),
 	require("custom.bloat"),
+	require("custom.mininvim"),
+	require("custom.convert")
 }, {})

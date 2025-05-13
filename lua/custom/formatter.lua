@@ -29,15 +29,23 @@ return {
 				},
 				javascript = {
 					require("formatter.filetypes.javascript").prettierd,
+					require("formatter.filetypes.javascript").eslint_d,
 				},
 				typescript = {
 					require("formatter.filetypes.typescript").prettierd,
+					require("formatter.filetypes.typescript").eslint_d,
 				},
 				javascriptreact = {
 					require("formatter.filetypes.javascriptreact").prettierd,
+					require("formatter.filetypes.javascriptreact").eslint_d,
 				},
 				typescriptreact = {
 					require("formatter.filetypes.typescriptreact").prettierd,
+					require("formatter.filetypes.typescriptreact").eslint_d,
+				},
+				go = {
+					require("formatter.filetypes.go").gofmt,
+					require("formatter.filetypes.go").goimports,
 				},
 				css = {
 					function()
