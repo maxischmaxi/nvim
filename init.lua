@@ -47,7 +47,7 @@ require("lazy").setup({
 	require("custom.tokyonight"),
 	require("custom.conflict-marker"),
 	require("custom.spectre"),
-	require("custom.dressing"),
+	-- require("custom.dressing"),
 	require("custom.formatter"),
 	require("custom.bloat"),
 	require("custom.mininvim"),

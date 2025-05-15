@@ -28,6 +28,7 @@ set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
+set("n", "<C-i>", ":noh<CR>", { silent = true, desc = "hide search highlights" })
 
 local function tmux_yabai_or_split_switch(wincmd, direction)
 	local previous_winnr = vim.api.nvim_get_current_win()
