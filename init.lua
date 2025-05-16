@@ -27,17 +27,19 @@ require("custom.hex_to_rgb")
 require("custom.studienarbeit")
 
 require("lazy").setup({
+	require("plugins.lazydev"),
 	require("plugins.oil"),
 	require("plugins.mason"),
 	require("plugins.mason-lspconfig"),
 	require("plugins.nvim-lspconfig"),
-	require("plugins.blink_cmp"),
+	require("plugins.nvim-cmp"),
 	require("plugins.sleuth"),
 	require("plugins.autopairs"),
 	require("plugins.autotag"),
 	require("plugins.comment"),
 	require("plugins.flash"),
 	require("plugins.telescope"),
+	require("plugins.luasnip"),
 	require("plugins.treesitter"),
 	require("plugins.fugitive"),
 	require("plugins.mdx"),
