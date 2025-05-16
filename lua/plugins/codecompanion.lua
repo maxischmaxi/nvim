@@ -6,11 +6,21 @@ return {
 	},
 	config = function()
 		require("codecompanion").setup({
+			opts = {
+				log_level = "DEBUG",
+			},
+			strategies = {
+				agent = { adapter = "openai" },
+				chat = { adapter = "openai" },
+				inline = { adapter = "openai" },
+			},
 			adapters = {
 				openai = function()
 					return require("codecompanion.adapters").extend("openai", {
-						env = {
-							api_key = os.getenv("OPENAI_KEY"),
+						schema = {
+							model = {
+								default = "gpt-4o",
+							},
 						},
 					})
 				end,
