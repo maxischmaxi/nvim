@@ -19,7 +19,7 @@ set("n", "gD", vim.lsp.buf.declaration, { desc = "[G]oto [D]eclaration" })
 set("n", "K", function()
 	vim.lsp.buf.hover({ border = "rounded", padding = { 1, 1 } })
 end, { desc = "Hover Documentation" })
-set("n", "<C-k>", vim.lsp.buf.signature_help, { desc = "Signature Documentation" })
+-- set("n", "<C-k>", vim.lsp.buf.signature_help, { desc = "Signature Documentation" })
 
 set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
@@ -68,4 +68,12 @@ vim.api.nvim_create_autocmd("FileType", {
 			tmux_yabai_or_split_switch("l", "east")
 		end, { buffer = true, desc = "Open file" })
 	end,
+})
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+	group = vim.api.nvim_create_augroup("YankHighlight", { clear = true }),
+	pattern = "*",
 })

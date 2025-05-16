@@ -25,31 +25,27 @@ require("custom.base_options")
 require("custom.base_keymap")
 require("custom.hex_to_rgb")
 require("custom.studienarbeit")
--- require("custom.netrw")
-require("custom.yank")
 
 require("lazy").setup({
-	require("custom.oil"),
-	require("custom.mason"),
-	require("custom.sleuth"),
-	require("custom.autopairs"),
-	require("custom.autotag"),
-	require("custom.comment"),
-	-- require("custom.copilot"),
-	require("custom.flash"),
-	require("custom.nvim-cmp"),
-	require("custom.telescope"),
-	require("custom.treesitter"),
-	require("custom.fugitive"),
-	require("custom.mdx"),
-	require("custom.highlight-colors"),
-	require("custom.lualine"),
-	require("custom.tokyonight"),
-	require("custom.conflict-marker"),
-	require("custom.spectre"),
-	-- require("custom.dressing"),
-	require("custom.formatter"),
-	require("custom.bloat"),
-	require("custom.mininvim"),
-	require("custom.convert")
-}, {})
+	require("plugins.oil"),
+	require("plugins.mason"),
+	require("plugins.mason-lspconfig"),
+	require("plugins.nvim-lspconfig"),
+	require("plugins.blink_cmp"),
+	require("plugins.sleuth"),
+	require("plugins.autopairs"),
+	require("plugins.autotag"),
+	require("plugins.comment"),
+	require("plugins.flash"),
+	require("plugins.telescope"),
+	require("plugins.treesitter"),
+	require("plugins.fugitive"),
+	require("plugins.mdx"),
+	require("plugins.highlight-colors"),
+	require("plugins.lualine"),
+	require("plugins.tokyonight"),
+	require("plugins.conflict-marker"),
+	require("plugins.spectre"),
+	require("plugins.formatter"),
+	require("plugins.codecompanion"),
+})
