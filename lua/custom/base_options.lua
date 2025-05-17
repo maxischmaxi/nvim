@@ -3,7 +3,7 @@ vim.g.loaded_perl_provider = 0
 vim.g.maplocalleader = " "
 
 local vimOptions = {
-	wrap = false,
+	wrap = true,
 	expandtab = true,
 	hlsearch = true,
 	mouse = "a",
