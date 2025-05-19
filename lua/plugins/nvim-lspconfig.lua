@@ -2,30 +2,10 @@ return {
 	"neovim/nvim-lspconfig",
 	opts = {
 		servers = {
+			eslint_d = {},
 			cssls = { filetypes = { "css", "scss", "less", "sass", "html" } },
 			cssmodules_ls = {
 				filetypes = { "css", "scss", "less", "sass", "html" },
-			},
-			eslint = {
-				codeAction = {
-					disableRuleComment = {
-						enable = true,
-						location = "separateLine",
-					},
-					showDocumentation = { enable = true },
-				},
-				codeActionOnSave = { enable = true, mode = "all" },
-				experimental = { useFlatConfig = true },
-				format = false,
-				nodePath = "",
-				onIgnoredFiles = "off",
-				problems = { shortenToSingleLine = false },
-				quiet = false,
-				rulesCustomizations = {},
-				run = "onType",
-				useESLintClass = false,
-				validate = "on",
-				workingDirectory = { mode = "location" },
 			},
 			gopls = {},
 			html = { filetypes = { "html", "twig", "hbs" } },
@@ -74,28 +54,17 @@ return {
 					"css",
 				},
 			},
-			ts_ls = {
+			vtsls = {
+				cmd = { "vtsls", "--stdio" },
 				filetypes = {
 					"javascript",
 					"javascriptreact",
+					"javascript.jsx",
 					"typescript",
 					"typescriptreact",
+					"typescript.tsx",
 				},
-				settings = {
-					typescript = {
-						preferences = {
-							disableSuggestions = true,
-							includeCompletionsForModuleExports = true,
-							includeCompletionsWithInsertText = true,
-						},
-					},
-					javascript = {
-						preferences = {
-							includeCompletionsForModuleExports = true,
-							includeCompletionsWithInsertText = true,
-						},
-					},
-				},
+				single_file_support = true,
 			},
 		},
 	},
