@@ -5,6 +5,7 @@ return {
 		require("mason-lspconfig").setup({
 			automatic_enable = true,
 			ensure_installed = {
+				"eslint-lsp",
 				"cssls",
 				"cssmodules_ls",
 				"gopls",

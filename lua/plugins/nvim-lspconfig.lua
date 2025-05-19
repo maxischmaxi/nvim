@@ -2,7 +2,6 @@ return {
 	"neovim/nvim-lspconfig",
 	opts = {
 		servers = {
-			eslint_d = {},
 			cssls = { filetypes = { "css", "scss", "less", "sass", "html" } },
 			cssmodules_ls = {
 				filetypes = { "css", "scss", "less", "sass", "html" },
