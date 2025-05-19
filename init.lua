@@ -50,4 +50,5 @@ require("lazy").setup({
 	require("plugins.spectre"),
 	require("plugins.formatter"),
 	require("plugins.codecompanion"),
+	require("plugins.hardtime"),
 })
