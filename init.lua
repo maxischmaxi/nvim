@@ -51,4 +51,5 @@ require("lazy").setup({
 	require("plugins.formatter"),
 	require("plugins.codecompanion"),
 	require("plugins.hardtime"),
+	require("plugins.copilot"),
 })

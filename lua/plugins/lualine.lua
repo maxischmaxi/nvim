@@ -5,7 +5,7 @@ return {
 		require("lualine").setup({
 			sections = {
 				lualine_a = { "mode" },
-				lualine_b = { "branch", "diff", "diagnostics" },
+				lualine_b = { "diff", "diagnostics" },
 				lualine_c = { { "filename", path = 1 } },
 				lualine_x = { "encoding", require("plugins.lualine-codecompanion") },
 				lualine_y = { "progress" },
