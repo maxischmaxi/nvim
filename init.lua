@@ -52,5 +52,5 @@ require("lazy").setup({
 	require("plugins.codecompanion"),
 	require("plugins.hardtime"),
 	require("plugins.copilot"),
-	require("plugins.dressing"),
+	-- require("plugins.dressing"),
 })

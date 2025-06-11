@@ -26,7 +26,7 @@ local vimOptions = {
 	shiftwidth = 4,
 	softtabstop = 4,
 	autoindent = true,
-	smartindent = true,
+	smartindent = false,
 }
 
 local windowOptions = {
