@@ -15,7 +15,6 @@ set("n", "<leader>-", ':exe "vertical resize " . (winwidth(0) * 2/3)<CR>', { sil
 
 set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "[R]e[n]ame" })
 set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "[C]ode [A]ction" })
-set("n", "gD", vim.lsp.buf.declaration, { desc = "[G]oto [D]eclaration" })
 set("n", "K", function()
 	vim.lsp.buf.hover({ border = "rounded", padding = { 1, 1 } })
 end, { desc = "Hover Documentation" })
