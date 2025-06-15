@@ -80,8 +80,13 @@ return {
 				},
 			},
 			pickers = {
+				current_buffer_fuzzy_find = {
+					previewer = false,
+				},
 				find_files = {
+					previewer = false,
 					hidden = true,
+					theme = "dropdown",
 					find_command = {
 						"rg",
 						"--files",
