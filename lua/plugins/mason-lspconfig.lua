@@ -11,7 +11,6 @@ return {
 				"html",
 				"jsonls",
 				"ltex",
-				"eslint-lsp",
 				"lua_ls",
 				"protols",
 				"pyright",
