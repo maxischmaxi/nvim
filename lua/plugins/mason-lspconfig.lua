@@ -11,7 +11,6 @@ return {
 				"html",
 				"jsonls",
 				"ltex",
-				"eslint_d",
 				"eslint-lsp",
 				"lua_ls",
 				"protols",
