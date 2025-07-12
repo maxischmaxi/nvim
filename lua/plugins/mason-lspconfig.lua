@@ -14,7 +14,6 @@ return {
 				"lua_ls",
 				"protols",
 				"pyright",
-				"goimports",
 				"rust_analyzer",
 				"stylelint_lsp",
 				"tailwindcss",
