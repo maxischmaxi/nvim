@@ -20,6 +20,9 @@ set("n", "K", function()
 end, { desc = "Hover Documentation" })
 -- set("n", "<C-k>", vim.lsp.buf.signature_help, { desc = "Signature Documentation" })
 
+set("n", "<leader>dp", vim.diagnostic.goto_prev, { desc = "[D]iagnostic [P]revious" })
+set("n", "<leader>dn", vim.diagnostic.goto_next, { desc = "[D]iagnostic [N]ext" })
+
 set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
 set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
