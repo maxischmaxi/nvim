@@ -57,6 +57,7 @@ return {
 					"--smart-case",
 				},
 				file_ignore_patterns = {
+					"pdf.worker.min.mjs",
 					"kickstart.txt",
 					"stockfish.js",
 					"stockfish.wasm",
